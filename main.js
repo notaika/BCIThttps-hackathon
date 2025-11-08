@@ -1,6 +1,10 @@
 import { app, BrowserWindow } from "electron";
 export { app };
+import path from "node:path";
+import { fileURLToPath } from "url";
 import { readTemplates, createNewTemplate, buildTemplate } from "./script.js";
+
+const __dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
 
 function createWindow() {
   const win = new BrowserWindow({
