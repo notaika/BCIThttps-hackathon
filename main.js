@@ -2,23 +2,31 @@ import { app, BrowserWindow } from "electron";
 export { app };
 import { readTemplates, createNewTemplate, buildTemplate } from "./script.js";
 
-/* Function that creates a new window and loads index.html into it */
-const createWindow = () => {
+function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
+    width: 400,
     height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
   win.loadFile("index.html");
-};
+}
 
-/* Load GUI when app is ready ('ready' is an event that app fires */
 app.whenReady().then(() => {
   createWindow();
   readTemplates();
+
+  app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow();
+    }
+  });
 });
 
-/* Quit app when window is closed */
 app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") app.quit();
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
 });
