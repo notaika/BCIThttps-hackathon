@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require("electron");
+export app;
 
 /* Function that creates a new window and loads index.html into it */
 const createWindow = () => {
