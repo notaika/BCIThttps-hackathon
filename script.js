@@ -1,10 +1,10 @@
 import { app } from "./main.js";
 import path from "node:path";
-import * as fs from "node:fs"
+import * as fs from "node:fs";
 export { readTemplates };
 
 const template_filepath = path.join(app.getPath("userData"), "templates.json");
-let templates;
+let templates = {};
 
 /* Read in all templates from file. Should be called
  * upon startup */
@@ -13,8 +13,8 @@ function readTemplates() {
   try {
     template_doc = fs.readFileSync(template_filepath);
     templates = JSON.parse(template_doc);
-    } catch (err) {
-    console.log(err);
+  } catch (err) {
+    throw err;
   }
 }
 
