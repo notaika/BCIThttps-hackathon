@@ -1,6 +1,6 @@
 # templ.it
 
-templ.it is a cross platform desktop app that creates file structures from custom or predefined functions. The user can create . For example, let's say the user wants to create this file structure:
+templ.it is a cross platform desktop app that creates file structures from custom or predefined templates. The user can create . For example, let's say the user wants to create this file structure:
 
 ` ```text
 ├───assignment1
