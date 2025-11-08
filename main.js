@@ -1,7 +1,6 @@
 import { app, BrowserWindow } from "electron";
 export { app };
-import "./script.js";
-import { readTemplates } from "./script.js";
+import { readTemplates, createNewTemplate, buildTemplate } from "./script.js";
 
 /* Function that creates a new window and loads index.html into it */
 const createWindow = () => {
