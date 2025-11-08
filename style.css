@@ -19,10 +19,54 @@ CSS Reset - https://www.joshwcomeau.com/css/custom-css-reset/
   }
 }
 
+/*
+KANAGAWA ROOT VARIABLES
+*/
+:root {
+  /* Sumi Ink (Backgrounds) */
+  --sumi-ink-0: #16161d;
+  --sumi-ink-1: #1f1f28;
+  --sumi-ink-2: #2a2a37;
+  --sumi-ink-3: #363646;
+  --sumi-ink-4: #54546d;
+
+  /* Woods (Foregrounds) */
+  --fuji-white: #dcd7ba;
+  --old-white: #c8c093;
+  --fuji-gray: #727169;
+
+  /* Waves (Blues) */
+  --wave-blue-1: #2d4f67;
+  --wave-blue-2: #5a778d;
+
+  /* "Living" Accents (Bright) */
+  --carp-red: #e82424;
+  --sakura-pink: #d27e99;
+  --wave-aqua-2: #7aa89f;
+  --peach-red: #ff5d62;
+
+  /* "Calm" Accents (Subtle) */
+  --autumn-green: #76946a;
+  --autumn-yellow: #dca561;
+  --autumn-red: #c34043;
+
+  /* Ronin / Other */
+  --ronin-yellow: #ff9e3b;
+  --oni-violet: #957fb8;
+  --crystal-blue: #7e9cd8;
+}
+
 body {
   font-family: "Source Code Pro", monospace;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+
+  background-color: var(--sumi-ink-1);
+  color: var(--fuji-white);
+  overflow: hidden;
+  user-select: none;
+
+  height: 100vh;
 }
 
 img,
@@ -38,7 +82,7 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+  font: inherit; /* This is great, inputs/buttons now use "Source Code Pro" */
 }
 
 p,
@@ -68,6 +112,226 @@ h6 {
   isolation: isolate;
 }
 
+small {
+  font-size: 12px !important;
+  margin-bottom: 0.5em;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.template-path-label {
+  line-height: 1em;
+  margin: 0 !important;
+}
+
 /*
 index.html
 */
+#title-bar {
+  height: 40px;
+  background-color: var(--sumi-ink-0);
+  color: var(--old-white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--sumi-ink-3);
+  display: none; /*FOR NOWW*/
+}
+
+.container {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.input-group {
+  margin-bottom: 1em;
+}
+
+.input-group label {
+  display: block;
+  color: var(--crystal-blue);
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 1.1em;
+}
+
+.input-with-button {
+  display: flex;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.input-with-button input[type="text"] {
+  flex-grow: 1;
+  background: none;
+  border: none;
+  padding: 10px 12px;
+  color: var(--sakura-pink);
+  font-size: 1em;
+  outline: none;
+  caret-color: var(--autumn-green);
+}
+
+.input-with-button input[readonly] {
+  cursor: default;
+  color: var(--oni-violet);
+}
+
+.input-with-button button.btn-icon {
+  background-color: var(--sumi-ink-3);
+  border: none;
+  color: var(--fuji-white);
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s ease;
+  border-left: 1px solid var(--sumi-ink-1);
+}
+
+.input-with-button button.btn-icon:hover {
+  background-color: var(--crystal-blue);
+  color: var(--sumi-ink-0);
+}
+
+.input-destination {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-destination-style {
+  border: 1px solid var(--sumi-ink-4);
+  background-color: var(--sumi-ink-2);
+}
+
+.input-template {
+  display: flex;
+}
+
+.input-template-select:focus,
+.input-template-select:active {
+  outline: none;
+  border-color: var(--ronin-yellow);
+}
+
+.input-template-select {
+  flex-grow: 4;
+  margin-right: 1em;
+  border: 2px solid var(--sumi-ink-4);
+  border-radius: 4px;
+  padding: 0.5em;
+}
+
+.inpute-template-list {
+  flex-grow: 1;
+  border: 1px solid var(--sumi-ink-4);
+}
+
+.helper-text {
+  font-size: 0.85em;
+  color: var(--fuji-gray);
+  margin-top: 6px;
+  padding-left: 2px;
+}
+
+.save-to {
+  color: var(--ronin-yellow);
+}
+
+/* Action Buttons */
+#create-template-btn {
+  background-color: var(--autumn-red);
+  border-bottom: 3px solid #892c2e;
+}
+
+#create-template-btn:hover {
+  background-color: var(--autumn-yellow);
+  border-bottom: 3px solid #b4864f;
+}
+
+.action-btn {
+  flex-grow: 1;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: "Source Code Pro", monospace;
+  background-color: var(--autumn-green);
+  border-bottom: 3px solid #546c4b;
+  color: var(--fuji-white);
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: var(--wave-aqua-2);
+  border-bottom: 1spx solid #5a827a;
+  transform: translateY(2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.action-btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+  transition: transform 0.05s ease;
+}
+
+.secondary-btn:hover {
+  background-color: var(--sumi-ink-4);
+  border-bottom-color: var(--sumi-ink-3);
+}
+
+/* Status Log Area */
+#status-log {
+  background-color: var(--sumi-ink-0);
+  border: 1px solid var(--sumi-ink-3);
+  border-radius: 4px;
+  padding: 15px;
+  overflow-y: auto;
+  flex-grow: 1;
+  min-height: 0;
+}
+
+#status-message {
+  color: var(--fuji-white);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-style: italic;
+}
+
+#status-message.error {
+  color: var(--carp-red);
+  font-style: normal;
+}
+
+#status-message.success {
+  color: var(--autumn-green);
+  font-style: normal;
+}
+
+#status-message.pending {
+  color: var(--autumn-yellow);
+  font-style: normal;
+}
+
+/* Testing how this would differ from a Windows OS vs. MacOS, can't style the datalist/option on MacOS visually :(*/
+datalist {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+datalist option {
+  font-family: "Source Code Pro", monospace;
+  font-size: 12px;
+  color: var(--fuji-white);
+  background-color: var(--sumi-ink-3);
+}

@@ -1,4 +1,4 @@
-export { readTemplates, createNewTemplate, buildTemplate };
+export { readTemplates, createNewTemplate, buildTemplate, templates };
 import { app } from "./main.js";
 import path from "node:path";
 import * as fs from "node:fs";
@@ -40,7 +40,7 @@ function buildTempItemArray(tempItems, filepath) {
       });
     }
     if (fsItem.type === "folder") {
-      fs.mkdir(itemPath, (err) => {
+      fs.mkdir(itemPath, { recursive: true }, (err) => {
         if (err && err.code !== "EEXIST") throw err;
         buildTempItemArray(fsItem.content, itemPath);
       });
