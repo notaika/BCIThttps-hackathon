@@ -52,4 +52,42 @@ function saveTemplates() {
 
 /* Read the file structure at filepath and load it into templates, 
    then call saveTemplates() */
-function createNewTemplate(filepath) {}
+function createNewTemplate(filepath) {
+  const templateName = path.basename(filepath);
+  let templateArray = [];
+  fs.opendir(filepath, async (err, dir) => {
+    const asyncTemplateCreationFunction = templateEntriesFromDir(templateArray);
+    await asyncTemplateCreationFunction(err, dir);
+    templates[templateName] = templateArray;
+    saveTemplates();
+  });
+}
+
+/* Recursive callback nonsense for creating templates */
+function templateEntriesFromDir(templateEntryArray) {
+  return async (err, dir) => {
+    if (err) throw err;
+    for await (const dirEntry of dir) {
+      let templateEntry = {};
+
+      if (dirEntry.isFile()) {
+        templateEntry.type = "file";
+        templateEntry.name = dirEntry.name;
+        console.log(templateEntry);
+      } else if (dirEntry.isDirectory()) {
+        const dirEntryPath = path.join(dirEntry.parentPath, dirEntry.name);
+        templateEntry.type = "folder";
+        templateEntry.name = dirEntry.name;
+        templateEntry.content = [];
+        fs.opendir(dirEntryPath, templateEntriesFromDir(templateEntry.content));
+      } else {
+        throw new Error(
+          "Can't create template out of non-file, non-folder entry. What nonsene are you trying?",
+        );
+      }
+      templateEntryArray.push(templateEntry);
+    }
+  };
+}
+
+createNewTemplate("/home/june/cst/httphacks/teststuff/test_template");
