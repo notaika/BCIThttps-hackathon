@@ -1,5 +1,7 @@
 /* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -23,18 +25,31 @@ body {
 }
 
 /* 6. Improve media defaults */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
 /* 7. Inherit fonts for form controls */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
 /* 8. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
@@ -42,14 +57,20 @@ p, h1, h2, h3, h4, h5, h6 {
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
 /*
   10. Create a root stacking context
 */
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
@@ -65,10 +86,10 @@ body {
 }
 
 .window {
-  width: 800px;
+  width: 1000px;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
@@ -102,7 +123,8 @@ input[type="text"] {
   margin-top: 20px;
 }
 
-.folder-structure, .file-content {
+.folder-structure,
+.file-content {
   flex: 1;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -184,6 +206,11 @@ textarea {
   margin-top: 15px;
 }
 
+#manageVariablesBtn {
+  margin-top: 10px;
+  background-color: #f0f0f0;
+}
+
 .buttons {
   text-align: right;
   margin-top: 20px;
@@ -209,4 +236,15 @@ button {
 
 button:hover {
   opacity: 0.9;
+}
+
+.ascii-tree {
+  background: #f0f0f0;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 14px;
+  border-radius: 6px;
+  white-space: pre;
+  overflow-x: auto;
+  max-height: 300px;
 }
