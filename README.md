@@ -1,6 +1,6 @@
 # templ.it
 
-templ.it is a cross platform desktop app that creates file structures from custom or predefined templates. The user can create . For example, let's say the user wants to create this file structure:
+templ.it is a cross platform desktop app that creates file structures from custom or predefined templates. In one click, each of the parent folders, subfolders, and files are created for you. For example, let's say the user wants to create this file structure:
 
 ` ```text
 ├───assignment1
@@ -16,7 +16,7 @@ templ.it is a cross platform desktop app that creates file structures from custo
     ├───files
     └───imgs `
 
-templ.it would let you create a template of this file structure. In one click, each of the parent folders, subfolders, and files are created for you.
+templ.it reads this file structure and saves it as a template. You can then make as many instances of that template as you want, wherever you want.
 Note: templ.it does not copy images as part of the file structure (such as smiley.png). It only copies folders and files.
 
 Or if you wanted to easily create the file structure for the labs in COMP 1510:
