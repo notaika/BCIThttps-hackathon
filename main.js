@@ -1,5 +1,7 @@
-const { app, BrowserWindow } = require("electron");
-export app;
+import { app, BrowserWindow } from "electron";
+export { app };
+// import "./script.js";
+import { readTemplates } from "./script.js";
 
 /* Function that creates a new window and loads index.html into it */
 const createWindow = () => {
@@ -14,6 +16,7 @@ const createWindow = () => {
 /* Load GUI when app is ready ('ready' is an event that app fires */
 app.whenReady().then(() => {
   createWindow();
+  readTemplates();
 });
 
 /* Quit app when window is closed */
