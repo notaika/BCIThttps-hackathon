@@ -31,4 +31,3 @@ async function filePathBtn() {
   let localPathName = dialogObj.filePaths[0];
   destinationPathInput.setAttribute("value", localPathName);
 }
-filePathBtn();
