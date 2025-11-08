@@ -5,3 +5,7 @@ contextBridge.exposeInMainWorld("templit", {
   buildTemplate: (template, filepath) =>
     ipcRenderer.invoke("buildTemplate", template, filepath),
 });
+
+contextBridge.exposeInMainWorld("functions", {
+  getFilePath: async () => ipcRenderer.invoke("getFilePath"),
+});

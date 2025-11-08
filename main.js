@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow, dialog, ipcMain } from "electron";
 export { app };
 import path from "node:path";
 import { fileURLToPath } from "url";
@@ -26,11 +26,8 @@ function createWindow() {
 app.whenReady().then(() => {
   createWindow();
   readTemplates();
-
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
+  ipcMain.handle("getFilePath", async () => {
+    return await dialog.showOpenDialog({ properties: ["openDirectory"] });
   });
 
   ipcMain.handle("templates", () => templates);
@@ -39,8 +36,15 @@ app.whenReady().then(() => {
   });
 });
 
+app.on("activate", () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
+});
+
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
   }
 });
+
