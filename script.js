@@ -3,6 +3,80 @@ import { app } from "./main.js";
 import path from "node:path";
 import * as fs from "node:fs";
 const template_filepath = path.join(app.getPath("userData"), "templates.json");
+const default_template_json = {
+  COMP1537: [
+    {
+      name: "app",
+      type: "folder",
+      content: [
+        {
+          name: "data",
+          type: "folder",
+          content: [],
+        },
+        {
+          name: "html",
+          type: "folder",
+          content: [
+            {
+              name: "index.html",
+              type: "file",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "public",
+      type: "folder",
+      content: [
+        {
+          name: "js",
+          type: "folder",
+          content: [],
+        },
+        {
+          name: "css",
+          type: "folder",
+          content: [
+            {
+              name: "style.css",
+              type: "file",
+            },
+          ],
+        },
+        {
+          name: "img",
+          type: "folder",
+          content: [],
+        },
+      ],
+    },
+    {
+      name: "index.js",
+      type: "file",
+    },
+  ],
+  COMP1800: [
+    {
+      name: "public",
+      type: "folder",
+      content: [
+        {
+          name: "images",
+          type: "folder",
+          content: [],
+        },
+      ],
+    },
+    {
+      name: "src",
+      type: "folder",
+      content: [],
+    },
+  ],
+};
+
 let templates = {};
 
 /* Read in all templates from file. Should be called
@@ -13,7 +87,18 @@ function readTemplates() {
     template_doc = fs.readFileSync(template_filepath);
     templates = JSON.parse(template_doc);
   } catch (err) {
-    throw err;
+    if (err.code === "ENOENT") {
+      template_doc = fs.writeFile(
+        template_filepath,
+        JSON.stringify(default_template_json),
+        (err) => {
+          if (err) throw err;
+          readTemplates();
+        },
+      );
+    } else {
+      throw err;
+    }
   }
 }
 
