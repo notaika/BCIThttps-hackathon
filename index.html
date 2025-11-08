@@ -11,10 +11,108 @@
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
-    <title>Hello, hellscape!</title>
+    <link rel="stylesheet" href="./style.css" />
+    <title>templ.it</title>
+    <script type="module" src="./renderer.js"></script>
   </head>
+
   <body>
-    <h1>Surely this will be fine</h1>
-    <p>👋</p>
+    <main>
+      <div id="title-bar">
+        <div id="title">templ.it</div>
+        <div id="window-controls">
+          <button id="min-btn" title="Minimize">─</button>
+          <button id="max-btn" title="Maximize">□</button>
+          <button id="close-btn" title="Close">✕</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="input-group">
+          <label class="input-label template-path-label" for="template-path"
+            >Template:</label
+          >
+          <small class="helper-text"
+            ><i
+              >// List of available templates or custom folder structures.</i
+            ></small
+          >
+          <div class="input-with-button input-template">
+            <input
+              type="options"
+              id="template-select"
+              placeholder="Select a template or ... "
+              name="template-select"
+              list="template-list"
+              class="input-template-select"
+            />
+            <datalist id="template-list" class="input-template-list">
+            </datalist>
+            <button
+              id="create-template-btn"
+              class="action-btn"
+              title="Create a new template"
+            >
+              &gt;: new Template();
+            </button>
+          </div>
+        </div>
+
+        <div class="input-group input-destination">
+          <label for="destination-path">Destination:</label>
+          <div class="input-with-button input-destination-style">
+            <input
+              type="text"
+              id="destination-path"
+              placeholder="~/Templates/..."
+              readonly
+              class="input-destination-path"
+            />
+            <button
+              id="select-destination-btn"
+              class="btn-icon"
+              title="Select destination folder"
+            >
+              📁
+            </button>
+          </div>
+          <small class="helper-text">
+            <i
+              >// Template will be copied to
+              <span id="template-destination" class="save-to"
+                >"~/Templates/..."</span
+              ></i
+            >
+          </small>
+          <button
+            id="copy-template-btn"
+            class="action-btn"
+            title="Copy template to destination"
+          >
+            &gt;: copy template
+          </button>
+        </div>
+
+        <div id="status-log" class="update-log">
+          <p class="log-message">
+            &gt;
+            <span id="status-message" class="">... waiting for user input</span>
+          </p>
+          <p class="log-message">
+            &gt;
+            <span id="status-message" class="success"
+              >templ.it successfully loaded.</span
+            >
+          </p>
+
+          <p class="log-message">
+            &gt;
+            <span id="status-message" class="pending"
+              >... templ.it loading</span
+            >
+          </p>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

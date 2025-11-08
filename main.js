@@ -1,21 +1,49 @@
-const { app, BrowserWindow } = require("electron");
+import { app, BrowserWindow, dialog, ipcMain } from "electron";
+export { app };
+import path from "node:path";
+import { fileURLToPath } from "url";
+import {
+  readTemplates,
+  createNewTemplate,
+  buildTemplate,
+  templates,
+} from "./script.js";
 
-/* Function that creates a new window and loads index.html into it */
-const createWindow = () => {
+const __dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
+
+function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
+    width: 600,
     height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
-  win.loadFile("NewTemplate.html");
-};
+  win.loadFile("index.html");
+}
 
-/* Load GUI when app is ready ('ready' is an event that app fires */
 app.whenReady().then(() => {
   createWindow();
+  readTemplates();
+  ipcMain.handle("getFilePath", async () => {
+    return await dialog.showOpenDialog({ properties: ["openDirectory"] });
+  });
+
+  ipcMain.handle("templates", () => templates);
+  ipcMain.handle("buildTemplate", (event, template, filePath) => {
+    buildTemplate(template, filePath);
+  });
 });
 
-/* Quit app when window is closed */
+app.on("activate", () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
+});
+
 app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") app.quit();
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
 });
