@@ -1,13 +1,20 @@
 import { app } from "./main.js";
 import path from "node:path";
 import * as fs from "node:fs";
-
 const template_filepath = path.join(app.getPath("userData"), "templates.json");
 let templates = {};
 
 /* Read in all templates from file. Should be called
  * upon startup */
-function readTemplates() {}
+function readTemplates() {
+  let template_doc;
+  try {
+    template_doc = fs.readFileSync(template_filepath);
+    templates = JSON.parse(template_doc);
+  } catch (err) {
+    throw err;
+  }
+}
 
 /* Instance the selected template (arg is just
  * template name) at the specified location */
