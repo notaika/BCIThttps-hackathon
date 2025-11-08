@@ -80,7 +80,6 @@ function templateEntriesFromDir(templateEntryArray) {
       if (dirEntry.isFile()) {
         templateEntry.type = "file";
         templateEntry.name = dirEntry.name;
-        console.log(templateEntry);
       } else if (dirEntry.isDirectory()) {
         const dirEntryPath = path.join(dirEntry.parentPath, dirEntry.name);
         templateEntry.type = "folder";
@@ -96,5 +95,3 @@ function templateEntriesFromDir(templateEntryArray) {
     }
   };
 }
-
-createNewTemplate("/home/june/cst/httphacks/teststuff/test_template");
