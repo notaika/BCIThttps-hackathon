@@ -1,4 +1,4 @@
-export { readTemplates, createNewTemplate, buildTemplate };
+export { readTemplates, createNewTemplate, buildTemplate, templates };
 import { app } from "./main.js";
 import path from "node:path";
 import * as fs from "node:fs";

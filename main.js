@@ -1,8 +1,13 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
 export { app };
 import path from "node:path";
 import { fileURLToPath } from "url";
-import { readTemplates, createNewTemplate, buildTemplate } from "./script.js";
+import {
+  readTemplates,
+  createNewTemplate,
+  buildTemplate,
+  templates,
+} from "./script.js";
 
 const __dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
 
@@ -27,6 +32,8 @@ app.whenReady().then(() => {
       createWindow();
     }
   });
+
+  ipcMain.handle("templates", () => templates);
 });
 
 app.on("window-all-closed", () => {
