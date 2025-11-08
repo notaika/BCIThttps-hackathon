@@ -7,7 +7,7 @@ const createWindow = () => {
     height: 600,
   });
 
-  win.loadFile("index.html");
+  win.loadFile("NewTemplate.html");
 };
 
 /* Load GUI when app is ready ('ready' is an event that app fires */
