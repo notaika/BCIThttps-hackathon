@@ -1,134 +1,76 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Template - Template Folder Copier</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-     <div class="window">
-        <header class="window-header">
-            <div class="traffic-lights">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-            </div>
-            Template Builder
-        </header>
-
-        <main class="content">
-            <section class="section-group">
-                <label for="templateName">Template Name</label>
-                <input type="text" id="templateName" placeholder="e.g., React-TS-Microservice">
-            </section>
-
-            <section class="section-group folder-editor-container">
-                <label>Structure Editor</label>
-                <div class="folder-editor">
-                    <ul id="templateTree" class="tree-view">
-                        <li data-path="root" data-type="folder" class="folder open">
-                            <span class="tree-item-content">
-                                <span class="icon">📁</span>
-                                <input type="text" value="Template Root" readonly>
-                            </span>
-                            <ul class="sub-tree">
-                                <li data-path="src" data-type="folder" class="folder">
-                                    <span class="tree-item-content">
-                                        <span class="icon">📁</span>
-                                        <input type="text" value="src">
-                                    </span>
-                                </li>
-                                <li data-path="README.md" data-type="file" class="file">
-                                    <span class="tree-item-content">
-                                        <span class="icon">📄</span>
-                                        <input type="text" value="README.md">
-                                    </span>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="editor-actions">
-                    <button id="addFolderBtn" class="action-btn">New Folder</button>
-                    <button id="addFileBtn" class="action-btn">New File</button>
-                    <button id="deleteBtn" class="action-btn delete">Delete Selected</button>
-                </div>
-            </section>
-        </main>
-
-        <footer class="window-footer">
-            <button class="btn secondary-btn">Cancel</button>
-            <button id="saveTemplateBtn" class="btn primary-btn">Save Template</button>
-        </footer>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build New Template Structure</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="window">
-    <div class="title-bar">Build New Template Structure</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build New Template Structure</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="window">
+      <div class="title-bar">Build New Template Structure</div>
 
-    <div class="content">
-      <h2>Define Template Structure</h2>
+      <div class="content">
+        <h2>Define Template Structure</h2>
 
-      <label for="templateName">Template Name</label>
-      <input type="text" id="templateName" placeholder="e.g, Python CLI Project">
+        <label for="templateName">Template Name</label>
+        <input
+          type="text"
+          id="templateName"
+          placeholder="e.g, Python CLI Project"
+        />
 
-      <div class="main-section">
-        <div class="folder-structure">
-          <h3>Folder Structure</h3>
-          <div class="tree-actions">
-            <button id="addTemplateFolderBtn">+ Template</button>
-            <button id="addFolderBtn">+ Folder</button>
-            <button id="addFileBtn">+ File</button>
-            <button id="deleteBtn">🗑 Delete</button>
+        <div class="main-section">
+          <div class="folder-structure">
+            <h3>Folder Structure</h3>
+            <div class="tree-actions">
+              <button id="addTemplateFolderBtn">+ Template</button>
+              <button id="addFolderBtn">+ Folder</button>
+              <button id="addFileBtn">+ File</button>
+              <button id="deleteBtn">🗑 Delete</button>
+            </div>
+
+            <ul id="templateTree" class="tree-root">
+              <li class="folder" data-type="folder">
+                <span class="tree-item-content selected">
+                  <span class="icon">📁</span>
+                  <input type="text" value="Template Root" readonly />
+                </span>
+                <ul class="sub-tree"></ul>
+              </li>
+            </ul>
           </div>
 
-          <!-- The tree container -->
-          <ul id="templateTree" class="tree-root">
-            <li class="folder" data-type="folder">
-              <span class="tree-item-content selected">
-                <span class="icon">📁</span>
-                <input type="text" value="Template Root" readonly>
-              </span>
-              <ul class="sub-tree"></ul>
-            </li>
-          </ul>
-        </div>
-
-        <div class="file-content">
-          <h3>File Content (README.md)</h3>
-          <textarea id="fileContent" rows="12">
+          <div class="file-content">
+            <h3>File Content (README.md)</h3>
+            <textarea id="fileContent" rows="12">
 # ⟪ProjectName⟫
 
 This is a template for a new CLI project.
-          </textarea>
+          </textarea
+            >
+          </div>
+        </div>
+
+        <div class="template-options">
+          <label
+            ><input type="checkbox" id="includeEmpty" checked /> Include Empty
+            Folders</label
+          ><br />
+          <label
+            ><input type="checkbox" id="enablePlaceholders" checked /> Enable
+            Variable Placeholders</label
+          ><br />
+          <button id="manageVariablesBtn">Manage Variables</button>
+        </div>
+
+        <div class="buttons">
+          <button class="cancel">Cancel</button>
+          <button id="saveTemplateBtn" class="save">Save Template</button>
         </div>
       </div>
-
-      <div class="template-options">
-        <label><input type="checkbox" id="includeEmpty" checked> Include Empty Folders</label><br>
-        <label><input type="checkbox" id="enablePlaceholders" checked> Enable Variable Placeholders</label>
-      </div>
-
-      <div class="buttons">
-        <button class="cancel">Cancel</button>
-        <button id="saveTemplateBtn" class="save">Save Template</button>
-      </div>
     </div>
-  </div>
 
-  <script src="renderer.js"></script>
-</body>
+    <script src="renderer.js"></script>
+  </body>
 </html>
