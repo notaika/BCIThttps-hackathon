@@ -40,7 +40,7 @@ function buildTempItemArray(tempItems, filepath) {
       });
     }
     if (fsItem.type === "folder") {
-      fs.mkdir(itemPath, (err) => {
+      fs.mkdir(itemPath, { recursive: true }, (err) => {
         if (err && err.code !== "EEXIST") throw err;
         buildTempItemArray(fsItem.content, itemPath);
       });

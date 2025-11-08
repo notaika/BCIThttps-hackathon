@@ -34,6 +34,9 @@ app.whenReady().then(() => {
   });
 
   ipcMain.handle("templates", () => templates);
+  ipcMain.handle("buildTemplate", (event, template, filePath) => {
+    buildTemplate(template, filePath);
+  });
 });
 
 app.on("window-all-closed", () => {

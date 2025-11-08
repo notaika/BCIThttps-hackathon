@@ -1,16 +1,24 @@
 const templateDatalist = document.getElementById("template-list");
+const copyButton = document.getElementById("copy-template-btn");
+const destinationPathInput = document.getElementById("destination-path");
+const templateInput = document.getElementById("template-select");
 
 document.addEventListener("DOMContentLoaded", (event) => {
-  console.log("hi");
   populateTemplateList();
+  copyButton.addEventListener("click", copyTemplate);
 });
 
 async function populateTemplateList() {
-  console.log("hi");
   const templates = await window.templit.templates();
   for (const template in templates) {
-    console.log(template);
     let templateOption = new Option(template, template);
     templateDatalist.appendChild(templateOption);
   }
+}
+
+function copyTemplate() {
+  window.templit.buildTemplate(
+    templateInput.value.trim(),
+    destinationPathInput.value.trim(),
+  );
 }
