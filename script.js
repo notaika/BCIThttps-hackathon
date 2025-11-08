@@ -44,7 +44,11 @@ function buildTempItemArray(tempItems, filepath) {
 
 /* Save entire templates array back to template file. Should
  * be called whenever a template is created by the user */
-function saveTemplates() {}
+function saveTemplates() {
+  fs.writeFile(template_filepath, JSON.stringify(templates), (err) => {
+    if (err) throw err;
+  });
+}
 
 /* Read the file structure at filepath and load it into templates, 
    then call saveTemplates() */
