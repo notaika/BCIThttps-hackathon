@@ -55,7 +55,6 @@ app.whenReady().then(() => {
     win.reload();
     templateWindow.focus();
   });
-
   ipcMain.handle("templates", () => templates);
   ipcMain.handle("buildTemplate", (event, template, filePath) => {
     buildTemplate(template, filePath);

@@ -13,17 +13,16 @@ document
 
 async function getTemplatePathToCopy() {
   try {
-    console.log("sup");
     let dialogObj = await window.functions.getTemplatePathToCopy();
     let localPathName = dialogObj.filePaths[0];
+    document.getElementById("template-location").setAttribute("value", localPathName);
     const fileStructure = window.templit.filePathToArray(localPathName);
     displayTemplateStructure(
       fileStructure,
-      document.getElementById("file-content"),
+      localPathName
     );
     window.functions.sendCopyTemplateFilePath(localPathName);
   } catch (err) {
-    console.log("sup");
     console.log(err);
   }
 }
@@ -33,7 +32,7 @@ function closeWindow() {
 }
 
 function saveTemplate() {
-  // const templateSourcePath = document.getElementById("template-location").value;
+  const templateSourcePath = document.getElementById("template-location").value;
   const templateName = document.getElementById("template-name").value;
   window.templit.createNewTemplate(templateSourcePath, templateName);
   window.templit.refreshWindow("templateWindow");

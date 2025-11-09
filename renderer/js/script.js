@@ -112,7 +112,7 @@ function readTemplates() {
  * template name) at the specified location */
 function buildTemplate(template, filepath) {
   const tempItems = templates[template];
-  const buildPath = path.join(filepath, template.concat(Date.now()));
+  const buildPath = path.join(filepath, template);
 
   fs.mkdir(buildPath, { recursive: true }, (err) => {
     if (err && err.code !== "EEXIST") throw err;
