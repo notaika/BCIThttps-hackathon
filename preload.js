@@ -6,7 +6,8 @@ contextBridge.exposeInMainWorld("templit", {
     ipcRenderer.invoke("buildTemplate", template, filepath),
   openTemplateWindow: () => ipcRenderer.send("open-template-window"),
   closeTemplateWindow: () => ipcRenderer.invoke("close-template-window"),
-  filePathToArray: (filePath) => ipcRenderer.send("filePathToArray", filePath),
+  filePathToArray: async (filePath) =>
+    ipcRenderer.invoke("filePathToArray", filePath),
   createNewTemplate: (filepath, templateName) =>
     ipcRenderer.invoke("createNewTemplate", filepath, templateName),
   refreshWindow: (windowName) =>
