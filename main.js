@@ -7,6 +7,7 @@ import {
   createNewTemplate,
   buildTemplate,
   templates,
+  filePathToArray,
 } from "./renderer/js/script.js";
 let win;
 let templateWindow;
@@ -61,6 +62,9 @@ app.whenReady().then(() => {
   ipcMain.on("open-template-window", () => {
     createTemplateWindow();
   });
+  ipcMain.handle("filePathToArray", (event, filePath) =>
+    filePathToArray(filePath),
+  );
 });
 
 app.on("activate", () => {

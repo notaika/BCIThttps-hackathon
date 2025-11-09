@@ -8,6 +8,7 @@ contextBridge.exposeInMainWorld("templit", {
   closeTemplateWindow: () => ipcRenderer.invoke("close-template-window"),
   createNewTemplate: (filepath) =>
     ipcRenderer.send("createNewTemplate", filepath),
+  filePathToArray: (filePath) => ipcRenderer.send("filePathToArray", filePath),
 });
 
 contextBridge.exposeInMainWorld("functions", {

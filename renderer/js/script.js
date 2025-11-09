@@ -1,4 +1,10 @@
-export { readTemplates, createNewTemplate, buildTemplate, templates };
+export {
+  readTemplates,
+  createNewTemplate,
+  buildTemplate,
+  templates,
+  filePathToArray,
+};
 import { app } from "../../main.js";
 import path from "node:path";
 import * as fs from "node:fs";
@@ -143,8 +149,7 @@ function saveTemplates() {
 
 /* Read the file structure at filepath and load it into templates, 
    then call saveTemplates() */
-function createNewTemplate(filepath) {
-  const templateName = path.basename(filepath);
+function createNewTemplate(filepath, templateName) {
   let templateArray = [];
   fs.opendir(filepath, async (err, dir) => {
     const asyncTemplateCreationFunction = templateEntriesFromDir(templateArray);
@@ -152,6 +157,15 @@ function createNewTemplate(filepath) {
     templates[templateName] = templateArray;
     saveTemplates();
   });
+}
+
+/* Converts a file path to a JSON template structure */
+async function filePathToArray(filepath) {
+  let templateArray = [];
+  const dir = fs.opendirSync(filepath);
+  const asyncTemplateCreationFunction = templateEntriesFromDir(templateArray);
+  await asyncTemplateCreationFunction(null, dir);
+  return templateArray;
 }
 
 /* Recursive callback nonsense for creating templates */

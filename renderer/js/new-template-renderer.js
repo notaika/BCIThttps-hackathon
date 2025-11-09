@@ -1,3 +1,6 @@
+import { displayTemplateStructure } from "./treeRendering.js";
+const templates = await window.templit.templates();
+
 document.addEventListener("DOMContentLoaded", (event) => {
   document
     .getElementById("template-location-btn")
@@ -12,6 +15,11 @@ async function getTemplatePathToCopy() {
   try {
     let dialogObj = await window.functions.getTemplatePathToCopy();
     let localPathName = dialogObj.filePaths[0];
+    const fileStructure = window.templit.filePathToArray(localPathName);
+    displayTemplateStructure(
+      fileStructure,
+      document.getElementById("file-content"),
+    );
     window.functions.sendCopyTemplateFilePath(localPathName);
   } catch (err) {
     console.log(err);
