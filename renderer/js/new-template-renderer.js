@@ -15,6 +15,5 @@ async function getTemplatePathToCopy() {
 }
 
 function closeWindow() {
-  console.log("test")
   window.templit.closeTemplateWindow();
 }
