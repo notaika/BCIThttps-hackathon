@@ -1,59 +1,66 @@
-# templ.it
+# Overview
+templ.it is a utility desktop app that streamlines your workflow by creating complex folder and file structures from a saved template. Stop manually creating `src`, `components`, and `utils` folders;  create one template instead.
 
-templ.it is a cross platform desktop app that creates file structures from custom or predefined templates. In one click, each of the parent folders, subfolders, and files are created for you. For example, let's say the user wants to create this file structure:
+## Problem
+Have you ever made a reusable file structure, such as for a class or project? It can be tedious, frustrating, and time consuming. You have to manually create each of the folders and files, and if you make any changes to the parent folders, you have to restart.
 
-` ```text
-├───assignment1
-│   ├───files
-│   │   ├───homework.txt
-│   │   └───homework.txt
-│   └───imgs
-│       └───smiley.png
-├───assignment2
-│   ├───report.docx
-│   └───
-└───assignment3
-    ├───files
-    └───imgs `
+### Target Users
+- Students
+- Programmers
+- Researchers
+- ... and more
 
-templ.it reads this file structure and saves it as a template. You can then make as many instances of that template as you want, wherever you want.
-Note: templ.it does not copy images as part of the file structure (such as smiley.png). It only copies folders and files.
+### Usage Scenarios
+- Productivity and Organization - streamline your workflow and remove inconsistencies
+- Customization - create a unique template for every use case
+- Simplicity - only the features you need are included
 
-Or if you wanted to easily create the file structure for the labs in COMP 1510:
+# Key Features
+- **Try a Template** - Select from a list of pre-designed templates provided by templ.it() to help get you started.
+- **Add a New Template** - Select an existing folder structure from your system, and save it as a template for the future. Text in files is also saved, allowing you to easily boilerplate files.
+- **Create a New Instance** - Name the topmost folder, specify where the file structure is created, and easily create a new copy.
+- **Delete a Template** - Ability to delete existing templates.
+- **Visualize Your Template Tree** - templ.it() scaffolds and renders a visual representation of the selected template for you.
+- **Works Across Multiple Platforms** - Built with Electron, templ.it(); was cross-developed and tested on multiple operating systems (Windows, macOS and Linux) - we can guarantee 100% functionality for these platforms.
+- **Fully Functional Offline** - Works 100% locally and offline, always available and fast
+- **Visually Appealing UI** - We poured a lot of love into the UI. With a Neovim-inspired aesthetic, the interface is designed to be beautiful, functional, and feel right at home for any developer.
+- **Multi-Purpose and Functional** - `templ.it();` copies files *and* their contents. Create boilerplates within folder templates and it will be included in every instance `templ.it()` instance genetated.
 
-` ```text
-├───Comp1510Lab01DoeJ
-│   ├───.settings
-│   ├───bin
-│   │   └───ca
-│   │       └───bcit
-│   │           └───comp1510
-│   │               └───lab08
-│   ├───src
-│   │   └───ca
-│   │       └───bcit
-│   │           └───comp1510
-│   │               └───lab08
-│   └───test
-│       └───ca
-│           └───bcit
-│               └───comp1510
-│                   └───lab08 `
+# Installation
 
-## How to Run
+### For macOS:
+- Double click on `templit-darwin-arm64-1.0.0.zip`
+- In the new folder that was created, double click on the application to run as is, or move it to your `Applications` folder. Enjoy!
 
-Figure it out yourself
+### For Windows:
+- Unzip `templit-windows`x64.zip` and run `templit-1.0.0 Setup` application
+- templ.it should start running automatically, and shortcuts will be created for you. Enjoy!
 
-## Tech Stack
+### For Linux:
+- Unzip `templit-linux-x64-1.0.0.zip` and either add it to your PATH or execute as is. Enjoy!
 
-Electron
-HTML
-CSS
-JavaScript
+# Tech Stack
+- Electron
+- Javascript
+- HTML
+- CSS
 
-## Authors
+# Next Steps
+## Short Term
+- Add an in-house GUI to create the template file structure when creating a new template
+- Add an edit template functionality
+- Add copying image capability when creating a new template
 
-Aayush Aggarwal
-Aika Manalo
-June Pyle
-Mischa Potter
+## Long Term
+- Make templ.it() as a multi-purpose template app. Expand from folders to doing text/doc file structures
+
+# Credits and Honourable Mentions
+**Aika Manalo** - CST Term 1
+
+**June Pyle** - CST Term 1
+
+**Mischa Potter** - CST Term 1
+
+**Aayush Aggarwal** - CST Term 1
+
+---
