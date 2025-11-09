@@ -4,6 +4,7 @@ contextBridge.exposeInMainWorld("templit", {
   templates: () => ipcRenderer.invoke("templates"),
   buildTemplate: (template, filepath) =>
     ipcRenderer.invoke("buildTemplate", template, filepath),
+  openTemplateWindow: () => ipcRenderer.send("open-template-window"),
 });
 
 contextBridge.exposeInMainWorld("functions", {

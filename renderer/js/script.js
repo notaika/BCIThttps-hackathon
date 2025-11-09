@@ -1,5 +1,5 @@
 export { readTemplates, createNewTemplate, buildTemplate, templates };
-import { app } from "./main.js";
+import { app } from "../../main.js";
 import path from "node:path";
 import * as fs from "node:fs";
 const template_filepath = path.join(app.getPath("userData"), "templates.json");
@@ -89,7 +89,7 @@ function templateEntriesFromDir(templateEntryArray) {
         fs.opendir(dirEntryPath, templateEntriesFromDir(templateEntry.content));
       } else {
         throw new Error(
-          "Can't create template out of non-file, non-folder entry. What nonsene are you trying?",
+          "Can't create template out of non-file, non-folder entry. What nonsene are you trying?"
         );
       }
       templateEntryArray.push(templateEntry);

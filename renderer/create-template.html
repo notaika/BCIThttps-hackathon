@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build New Template Structure</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="./css/create-template.css" />
+  </head>
+  <body>
+    <div class="window">
+      <!-- <div class="title-bar">Build New Template Structure</div> -->
+
+      <main class="container">
+        <label for="template-name" class="input-label template-name"
+          >Template Name</label
+        >
+        <input
+          type="text"
+          name="templateName"
+          id="template-name"
+          placeholder="e.g, Python CLI Project" />
+
+        <div class="main-section">
+          <div class="folder-structure">
+            <label for="templateOptions" class="input-label"
+              >Folder Structure</label
+            >
+
+            <div class="tree-actions" name="templateOptions">
+              <button id="add-template-btn">+ Template</button>
+              <button id="add-folder-btn">+ Folder</button>
+              <button id="add-file-btn">+ File</button>
+              <button id="delete-btn">🗑 Delete</button>
+            </div>
+
+            <!-- The tree container -->
+            <ul id="template-tree" class="tree-root">
+              <li class="folder" data-type="folder">
+                <span class="tree-item-content selected">
+                  <span class="icon">📁</span>
+                  <input type="text" value="Template Root" readonly />
+                </span>
+                <ul class="sub-tree"></ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="file-content">
+            <label for="fileContent" class="input-label"
+              >File Content (README.md)</label
+            >
+            <textarea id="file-content" name="fileContent" rows="12">
+              # ⟪ProjectName⟫
+
+              This is a template for a new CLI project.
+          </textarea
+            >
+          </div>
+        </div>
+
+        <div class="template-options">
+          <label
+            ><input
+              class="template-options-checkbox"
+              type="checkbox"
+              id="include-empty"
+              unchecked />
+            Include Empty Folders</label
+          ><br />
+          <label
+            ><input
+              class="template-options-checkbox"
+              type="checkbox"
+              id="enable-placeholders"
+              checked />
+            Enable Variable Placeholders</label
+          >
+        </div>
+
+        <div class="buttons">
+          <button class="cancel">Cancel</button>
+          <button id="save-template-btn" class="save">Save Template</button>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="./renderer.js"></script>
+  </body>
+</html>

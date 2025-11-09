@@ -1,136 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
-/*
-CSS Reset - https://www.joshwcomeau.com/css/custom-css-reset/
-*/
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-* {
-  margin: 0;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    interpolate-size: allow-keywords;
-  }
-}
-
-/*
-KANAGAWA ROOT VARIABLES
-*/
-:root {
-  /* Sumi Ink (Backgrounds) */
-  --sumi-ink-0: #16161d;
-  --sumi-ink-1: #1f1f28;
-  --sumi-ink-2: #2a2a37;
-  --sumi-ink-3: #363646;
-  --sumi-ink-4: #54546d;
-
-  /* Woods (Foregrounds) */
-  --fuji-white: #dcd7ba;
-  --old-white: #c8c093;
-  --fuji-gray: #727169;
-
-  /* Waves (Blues) */
-  --wave-blue-1: #2d4f67;
-  --wave-blue-2: #5a778d;
-
-  /* "Living" Accents (Bright) */
-  --carp-red: #e82424;
-  --sakura-pink: #d27e99;
-  --wave-aqua-2: #7aa89f;
-  --peach-red: #ff5d62;
-
-  /* "Calm" Accents (Subtle) */
-  --autumn-green: #76946a;
-  --autumn-yellow: #dca561;
-  --autumn-red: #c34043;
-
-  /* Ronin / Other */
-  --ronin-yellow: #ff9e3b;
-  --oni-violet: #957fb8;
-  --crystal-blue: #7e9cd8;
-}
-
-body {
-  font-family: "Source Code Pro", monospace;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-
-  background-color: var(--sumi-ink-1);
-  color: var(--fuji-white);
-  overflow: hidden;
-  user-select: none;
-
-  height: 100vh;
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit; /* This is great, inputs/buttons now use "Source Code Pro" */
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
-p {
-  text-wrap: pretty;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
-}
-
-#root,
-#__next {
-  isolation: isolate;
-}
-
-small {
-  font-size: 12px !important;
-  margin-bottom: 0.5em;
-}
-
-main {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-}
-
-.template-path-label {
-  line-height: 1em;
-  margin: 0 !important;
-}
-
-/*
-index.html
-*/
 #title-bar {
   height: 40px;
   background-color: var(--sumi-ink-0);
@@ -155,7 +22,7 @@ index.html
   margin-bottom: 1em;
 }
 
-.input-group label {
+.input-label {
   display: block;
   color: var(--crystal-blue);
   font-weight: bold;
@@ -178,6 +45,11 @@ index.html
   font-size: 1em;
   outline: none;
   caret-color: var(--autumn-green);
+}
+
+.template-path-label {
+  line-height: 1em;
+  margin: 0 !important;
 }
 
 .input-with-button input[readonly] {
@@ -335,4 +207,3 @@ datalist option {
   color: var(--fuji-white);
   background-color: var(--sumi-ink-3);
 }
-
