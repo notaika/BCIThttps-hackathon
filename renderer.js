@@ -1,10 +1,10 @@
-const templateDatalist = document.getElementById("template-list");
-const copyButton = document.getElementById("copy-template-btn");
-const destinationPathInput = document.getElementById("destination-path");
-const templateInput = document.getElementById("template-select");
-const createTemplateBtn = document.getElementById("create-template-btn");
-
 document.addEventListener("DOMContentLoaded", (event) => {
+  const templateDatalist = document.getElementById("template-list");
+  const copyButton = document.getElementById("copy-template-btn");
+  const destinationPathInput = document.getElementById("destination-path");
+  const templateInput = document.getElementById("template-select");
+  const createTemplateBtn = document.getElementById("create-template-btn");
+
   populateTemplateList();
   copyButton.addEventListener("click", copyTemplate);
   document

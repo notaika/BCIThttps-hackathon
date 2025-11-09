@@ -40,9 +40,8 @@
   flex-grow: 1;
   background: none;
   border: none;
-  padding: 10px 12px;
+  padding: 8px 12px;
   color: var(--sakura-pink);
-  font-size: 1em;
   outline: none;
   caret-color: var(--autumn-green);
 }
@@ -61,7 +60,7 @@
   background-color: var(--sumi-ink-3);
   border: none;
   color: var(--fuji-white);
-  padding: 10px 15px;
+  padding: 8px 15px;
   cursor: pointer;
   font-size: 1em;
   transition: background-color 0.2s ease;
@@ -101,7 +100,7 @@
   padding: 0.5em;
 }
 
-.inpute-template-list {
+.input-template-list {
   flex-grow: 1;
   border: 1px solid var(--sumi-ink-4);
 }
@@ -130,7 +129,7 @@
 
 .action-btn {
   flex-grow: 1;
-  padding: 12px 15px;
+  padding: 8px 12px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -145,7 +144,7 @@
 
 .action-btn:hover {
   background-color: var(--wave-aqua-2);
-  border-bottom: 1spx solid #5a827a;
+  border-bottom: 2px solid #40615b;
   transform: translateY(2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -154,11 +153,6 @@
   transform: translateY(1px);
   box-shadow: none;
   transition: transform 0.05s ease;
-}
-
-.secondary-btn:hover {
-  background-color: var(--sumi-ink-4);
-  border-bottom-color: var(--sumi-ink-3);
 }
 
 /* Status Log Area */
