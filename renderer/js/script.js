@@ -71,12 +71,9 @@ function readTemplates() {
         template_filepath,
         JSON.stringify(default_template_json),
         (err) => {
-          if (err) throw err;
           readTemplates();
         },
       );
-    } else {
-      throw err;
     }
   }
 }
@@ -87,9 +84,7 @@ function buildTemplate(template, filepath, topFolderName) {
   const tempItems = templates[template];
   const buildPath = path.join(filepath, topFolderName);
 
-  fs.mkdir(buildPath, { recursive: true }, (err) => {
-    if (err && err.code !== "EEXIST") throw err;
-  });
+  fs.mkdir(buildPath, { recursive: true }, (err) => {});
 
   buildTempItemArray(tempItems, buildPath);
 }
@@ -100,10 +95,7 @@ function buildTempItemArray(tempItems, filepath) {
     const itemPath = path.join(filepath, fsItem.name);
     if (fsItem.type === "file") {
       fs.open(itemPath, "wx", (err, fd) => {
-        if (err && err.code !== "EEXIST") throw err;
-        fs.write(fd, atob(fsItem.content), (err) => {
-          if (err) throw err;
-        });
+        fs.write(fd, atob(fsItem.content), (err) => {});
       });
     } else if (fsItem.type === "folder") {
       fs.mkdirSync(itemPath, { recursive: true });
@@ -115,9 +107,7 @@ function buildTempItemArray(tempItems, filepath) {
 /* Save entire templates array back to template file. Should
  * be called whenever a template is created by the user */
 function saveTemplates() {
-  fs.writeFile(template_filepath, JSON.stringify(templates), (err) => {
-    if (err) throw err;
-  });
+  fs.writeFile(template_filepath, JSON.stringify(templates), (err) => {});
 }
 
 /* Read the file structure at filepath and load it into templates, 
@@ -144,7 +134,6 @@ async function filePathToArray(filepath) {
 /* Recursive callback nonsense for creating templates */
 function templateEntriesFromDir(templateEntryArray) {
   return async (err, dir) => {
-    if (err) throw err;
     for await (const dirEntry of dir) {
       let templateEntry = {};
 
@@ -181,7 +170,5 @@ function deleteTemplate(templateName) {
   if (templateName in templates) {
     delete templates[templateName];
     saveTemplates();
-  } else {
-    console.log("runs but didn't work :(");
   }
 }
