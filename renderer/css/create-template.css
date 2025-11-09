@@ -22,3 +22,40 @@
 .template-name:active {
   outline: none;
 }
+
+.main-section {
+  margin-top: 1em;
+}
+
+/* Status Log Area */
+#file-content {
+  background-color: var(--sumi-ink-0);
+  border: 1px solid var(--sumi-ink-3);
+  border-radius: 4px;
+  padding: 15px;
+  overflow-y: auto;
+  flex-grow: 1;
+  min-height: 0;
+}
+
+#status-message {
+  color: var(--fuji-white);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-style: italic;
+}
+
+#status-message.error {
+  color: var(--carp-red);
+  font-style: normal;
+}
+
+#status-message.success {
+  color: var(--autumn-green);
+  font-style: normal;
+}
+
+#status-message.pending {
+  color: var(--autumn-yellow);
+  font-style: normal;
+}
