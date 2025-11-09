@@ -12,8 +12,6 @@ let win;
 let templateWindow;
 
 const __dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
-let win;
-let templateWindow;
 
 function createWindow() {
   win = new BrowserWindow({
