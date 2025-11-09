@@ -7,13 +7,13 @@ import {
   createNewTemplate,
   buildTemplate,
   templates,
-} from "./script.js";
+} from "./renderer/js/script.js";
 
 const __dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 600,
+    width: 800,
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
@@ -21,6 +21,19 @@ function createWindow() {
   });
 
   win.loadFile("index.html");
+}
+
+function createTemplateWindow() {
+  const templateWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+    },
+    modal: true,
+  });
+
+  templateWindow.loadFile("./renderer/create-template.html");
 }
 
 app.whenReady().then(() => {
@@ -33,6 +46,9 @@ app.whenReady().then(() => {
   ipcMain.handle("templates", () => templates);
   ipcMain.handle("buildTemplate", (event, template, filePath) => {
     buildTemplate(template, filePath);
+  });
+  ipcMain.on("open-template-window", () => {
+    createTemplateWindow();
   });
 });
 
