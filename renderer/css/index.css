@@ -7,7 +7,22 @@
   align-items: center;
   padding: 0 10px;
   border-bottom: 1px solid var(--sumi-ink-3);
-  display: none; /*FOR NOWW*/
+  line-height: 0.7em;
+  /* display: none; FOR NOWW */
+}
+
+#title {
+  font-family: "Silkscreen", sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#window-controls > button {
+  font-size: 8px;
+  padding: 0 0.3em;
 }
 
 .container {
@@ -153,6 +168,14 @@
   transform: translateY(1px);
   box-shadow: none;
   transition: transform 0.05s ease;
+}
+
+.input-template-instance-name {
+  width: 100%;
+}
+
+.input-group-sub {
+  margin-bottom: 0;
 }
 
 /* Status Log Area */
