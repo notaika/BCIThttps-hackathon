@@ -1,6 +1,16 @@
-/* #window-controls {
-  display: none;
-} */
+.main-section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+}
+
+.file-structure {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+}
 
 .input-label {
   display: block;

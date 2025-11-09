@@ -21,19 +21,20 @@ menuMinimizeBtn.addEventListener("click", () => {
 });
 menuCloseBtn.addEventListener("click", () => {
   window.templit.closeScreen("templateWindow");
-})
+});
 
 async function getTemplatePathToCopy() {
   try {
     let dialogObj = await window.functions.getTemplatePathToCopy();
     let localPathName = dialogObj.filePaths[0];
+    console.log(localPathName);
     document
       .getElementById("template-location")
       .setAttribute("value", localPathName);
     let fileStructure = await window.templit.filePathToArray(localPathName);
     displayTemplateStructure(
       fileStructure,
-      document.getElementById("folder-structure-content"),
+      document.getElementById("folder-structure-content")
     );
     window.functions.sendCopyTemplateFilePath(localPathName);
   } catch (err) {

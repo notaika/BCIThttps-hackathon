@@ -38,10 +38,10 @@
       <div class="container">
         <div class="input-group">
           <label class="input-label template-path-label" for="template-label"
-            >Template Name:</label
+            >New Template Name</label
           >
           <small class="helper-text"
-            ><i>// Enter a name for your templ.it()</i></small
+            ><i>// Enter a name for your new template</i></small
           >
           <div class="input-group-text">
             <input
@@ -55,16 +55,16 @@
 
         <div class="input-group input-destination">
           <label for="template-location" class="input-label"
-            >Select Location:</label
+            >Select New Template Structure</label
           >
           <small class="helper-text folder-location"
-            ><i>// Enter a location for your templ.it()</i></small
+            ><i>// Select a folder structure to convert into a template</i></small
           >
           <div class="input-with-button input-destination-style">
             <input
               type="text"
               id="template-location"
-              placeholder="~/Templates/..."
+              placeholder="~/User/Templates/New-Template..."
               readonly
               class="input-destination-path" />
             <button
@@ -79,13 +79,13 @@
         <div class="main-section">
           <div class="file-structure">
             <label for="file-content" class="input-label"
-              >Template Structure:</label
+              >Current Template Structure</label
             >
             <small class="helper-text"
-              ><i>// Your templ.it() folder structure...</i></small
+              ><i>// Your template structure currently looks like...</i></small
             >
-            <div id="folder-structure-content" name="file-content" rows="12">
-              # ⟪ProjectName⟫ This is a template for a new CLI project.
+            <div id="folder-structure-content" name="file-content">
+              <i>e.g., # ⟪ProjectName⟫ This is a template for a new CLI project.</i>
             </div>
           </div>
           <div class="buttons">
