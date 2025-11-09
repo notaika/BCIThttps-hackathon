@@ -143,8 +143,7 @@ function saveTemplates() {
 
 /* Read the file structure at filepath and load it into templates, 
    then call saveTemplates() */
-function createNewTemplate(filepath) {
-  const templateName = path.basename(filepath);
+function createNewTemplate(filepath, templateName) {
   let templateArray = [];
   fs.opendir(filepath, async (err, dir) => {
     const asyncTemplateCreationFunction = templateEntriesFromDir(templateArray);
