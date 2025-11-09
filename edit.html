@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>templ.it - create</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="./css/create-template.css" />
+    <script defer type="module" src="../renderer.js"></script>
+  </head>
+  <body>
+    <div class="window">
+      <main class="container">
+        <div class="input-group">
+          <label for="template-name" class="input-label template-name-title"
+            >Template Name:
+          </label>
+          <small class="helper-text"
+            ><i>// Enter a name for your templ.it()</i></small
+          >
+          <input
+            type="text"
+            name="template-name"
+            id="template-name"
+            placeholder="e.g, Python CLI Project" />
+        </div>
+
+        <div class="input-group input-template-folder">
+          <label for="template-location" class="input-label template-location"
+            >Select Location:
+          </label>
+
+          <small class="helper-text folder-location"
+            ><i>// Enter a name for your templ.it()</i></small
+          >
+          <div class="input-template-loc-top">
+            <input
+              type="text"
+              id="template-location"
+              placeholder="~/Templates/..."
+              readonly
+              class="input-location-path" />
+            <button
+              id="select-destination-btn"
+              class="btn-icon"
+              title="Select destination folder">
+              📁
+            </button>
+          </div>
+        </div>
+
+        <div class="main-section">
+          <div class="file-structure">
+            <label for="file-content" class="input-label"
+              >Template Structure:</label
+            >
+            <small class="helper-text folder-structure"
+              ><i>// Your templ.it() folder structure...</i></small
+            >
+            <div id="file-content" name="file-content" rows="12">
+              # ⟪ProjectName⟫ This is a template for a new CLI project.
+            </div>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button id="cancel-template-btn" class="action-btn cancel">
+            &gt;: Cancel
+          </button>
+          <button id="save-template-btn" class="action-btn save">
+            &gt;: Save Template
+          </button>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

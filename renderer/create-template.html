@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,33 +6,58 @@
     <title>templ.it - create</title>
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="./css/create-template.css" />
+    <script defer type="module" src="../renderer.js"></script>
   </head>
   <body>
-    <div class="window">
-      <!-- <div class="title-bar">Build New Template Structure</div> -->
+    <main>
+      <div id="title-bar">
+        <div id="title">templ.it</div>
+        <div id="window-controls">
+          <button id="min-btn" title="Minimize">─</button>
+          <button id="max-btn" title="Maximize">□</button>
+          <button id="close-btn" title="Close">✕</button>
+        </div>
+      </div>
 
-      <main class="container">
-        <div class="top-section">
-          <div class="input-template-name">
-            <label for="template-name" class="input-label template-name"
-              >Template Name:
-            </label>
+      <div class="container">
+        <div class="input-group">
+          <label class="input-label template-path-label" for="template-label"
+            >Template Name:</label
+          >
+          <small class="helper-text"
+            ><i>// Enter a name for your templ.it()</i></small
+          >
+          <div class="">
             <input
               type="text"
               name="template-name"
               id="template-name"
-              placeholder="e.g, Python CLI Project" />
+              placeholder="e.g, Python CLI Project"
+              class="input-template-name"
+            />
           </div>
+        </div>
 
-          <div class="input-template-folder">
-            <label for="template-location" class="input-label template-name"
-              >Select Location:
-            </label>
+        <div class="input-group input-destination">
+          <label for="template-location" class="input-label"
+            >Select Location:</label
+          >
+          <small class="helper-text folder-location"
+            ><i>// Enter a location for your templ.it()</i></small
+          >
+          <div class="input-with-button input-destination-style">
+            <input
+              type="text"
+              id="template-location"
+              placeholder="~/Templates/..."
+              readonly
+              class="input-destination-path"
+            />
             <button
-              name="template-location"
               id="template-location-btn"
               class="btn-icon"
-              title="Select template folder">
+              title="Select location folder"
+            >
               📁
             </button>
           </div>
@@ -43,21 +68,24 @@
             <label for="file-content" class="input-label"
               >Template Structure:</label
             >
-            <div id="file-content" name="file-content" rows="12">
+            <small class="helper-text"
+              ><i>// Your templ.it() folder structure...</i></small
+            >
+            <div id="folder-structure-content" name="file-content" rows="12">
               # ⟪ProjectName⟫ This is a template for a new CLI project.
             </div>
           </div>
+          <div class="buttons">
+            <button id="cancel-template-btn" class="action-btn cancel">
+              &gt;: Cancel
+            </button>
+            <button id="save-template-btn" class="action-btn save">
+              &gt;: Save Template
+            </button>
+          </div>
         </div>
-
-        <div class="buttons">
-          <button class="cancel" id="cancel-btn">&gt;: Cancel</button>
-          <button id="save-template-btn" class="save">
-            &gt;: Save Template
-          </button>
-        </div>
-      </main>
-    </div>
-
-    <script type="module" src="./js/new-template-renderer.js"></script>
+      </div>
+      <script type="module" src="./js/new-template-renderer.js"></script>
+    </main>
   </body>
 </html>

@@ -1,13 +1,10 @@
-
-
-const templateDatalist = document.getElementById("template-list");
-const copyButton = document.getElementById("copy-template-btn");
-const destinationPathInput = document.getElementById("destination-path");
-const templateInput = document.getElementById("template-select");
-const createTemplateBtn = document.getElementById("create-template-btn");
-
-
 document.addEventListener("DOMContentLoaded", (event) => {
+  const templateDatalist = document.getElementById("template-list");
+  const copyButton = document.getElementById("copy-template-btn");
+  const destinationPathInput = document.getElementById("destination-path");
+  const templateInput = document.getElementById("template-select");
+  const createTemplateBtn = document.getElementById("create-template-btn");
+
   populateTemplateList();
   copyButton.addEventListener("click", copyTemplate);
   document
@@ -17,7 +14,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     window.templit.openTemplateWindow();
   });
 });
-
 
 async function populateTemplateList() {
   const templates = await window.templit.templates();
@@ -30,7 +26,7 @@ async function populateTemplateList() {
 function copyTemplate() {
   window.templit.buildTemplate(
     templateInput.value.trim(),
-    destinationPathInput.value.trim()
+    destinationPathInput.value.trim(),
   );
 }
 
