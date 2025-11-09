@@ -1,14 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'" />
+      content="default-src 'self'; script-src 'self'"
+    />
     <meta
       http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'" />
+      content="default-src 'self'; script-src 'self'"
+    />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="./renderer/css/index.css" />
     <title>templ.it - main</title>
@@ -27,12 +29,14 @@
           <button id="max-btn" title="Maximize">
             <img
               src="./renderer/assets/icons/maximize.svg"
-              alt="maximize icon" />
+              alt="maximize icon"
+            />
           </button>
           <button id="min-btn" title="Minimize">
             <img
               src="./renderer/assets/icons/minimize.svg"
-              alt="minimize icon" />
+              alt="minimize icon"
+            />
           </button>
           <button id="close-btn" title="Close">
             <img src="./renderer/assets/icons/close.svg" alt="close icon" />
@@ -55,14 +59,16 @@
               placeholder="Select a template or ... "
               name="template-select"
               list="template-list"
-              class="input-template-select" />
+              class="input-template-select"
+            />
             <datalist id="template-list" class="input-template-list">
             </datalist>
             <button
               id="create-template-btn"
               class="action-btn"
-              title="Create a new template">
-              &gt;: Create Template
+              title="Create a new template"
+            >
+              &gt;: Create Template;
             </button>
           </div>
           <div class="input-group input-group-sub">
@@ -75,7 +81,8 @@
                 name="template-name"
                 id="template-instance-name"
                 placeholder="e.g. COMP1510 Folder Structure, Work Project Setup, ..."
-                class="input-template-instance-name" />
+                class="input-template-instance-name"
+              />
             </div>
           </div>
         </div>
@@ -88,11 +95,13 @@
               id="destination-path"
               placeholder="~/Templates/..."
               readonly
-              class="input-destination-path" />
+              class="input-destination-path"
+            />
             <button
               id="select-destination-btn"
               class="btn-icon"
-              title="Select destination folder">
+              title="Select destination folder"
+            >
               📁
             </button>
           </div>
@@ -107,7 +116,8 @@
           <button
             id="copy-template-btn"
             class="action-btn"
-            title="Copy template to destination">
+            title="Copy template to destination"
+          >
             &gt;: Copy Template
           </button>
         </div>
@@ -132,6 +142,12 @@
               >... templ.it loading</span
             >
           </p>
+          <p class="log-message" id="preview-log" hidden>
+            &gt; Loading template preview... <br />
+            <span id="preview-name"></span> <br />
+            <span id="template-preview"></span>
+          </p>
+          <p class="log-message" id="success-message" hidden></p>
         </div>
       </div>
     </main>

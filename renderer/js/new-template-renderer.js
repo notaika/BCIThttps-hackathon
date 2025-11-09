@@ -13,17 +13,18 @@ document
 
 async function getTemplatePathToCopy() {
   try {
-    console.log("sup");
     let dialogObj = await window.functions.getTemplatePathToCopy();
     let localPathName = dialogObj.filePaths[0];
     document
       .getElementById("template-location")
       .setAttribute("value", localPathName);
-    const fileStructure = window.templit.filePathToArray(localPathName);
-    displayTemplateStructure(fileStructure, localPathName);
+    const fileStructure = await window.templit.filePathToArray(localPathName);
+    displayTemplateStructure(
+      fileStructure,
+      document.getElementById("folder-structure-content"),
+    );
     window.functions.sendCopyTemplateFilePath(localPathName);
   } catch (err) {
-    console.log("sup");
     console.log(err);
   }
 }

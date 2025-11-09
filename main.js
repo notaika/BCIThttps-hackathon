@@ -66,8 +66,9 @@ app.whenReady().then(() => {
   ipcMain.on("open-template-window", () => {
     createTemplateWindow();
   });
-  ipcMain.handle("filePathToArray", (event, filePath) =>
-    filePathToArray(filePath),
+  ipcMain.handle(
+    "filePathToArray",
+    async (event, filePath) => await filePathToArray(filePath),
   );
 });
 
