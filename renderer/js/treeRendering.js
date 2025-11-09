@@ -18,7 +18,7 @@ function generateTree(templateItems, prefix = "") {
       tempItem.content &&
       tempItem.content.length > 0
     ) {
-      const nextPrefix = prefix + (isLast ? "   " : "|  ");
+      const nextPrefix = prefix + (isLast ? "\xa0\xa0\xa0" : "│\xa0\xa0");
       tree += generateTree(tempItem.content, nextPrefix);
     }
   }
