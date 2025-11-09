@@ -158,7 +158,7 @@ input {
   padding: 0 10px;
   border-bottom: 1px solid var(--sumi-ink-3);
   line-height: 0.7em;
-  /* display: none; FOR NOWW */
+  app-region: drag;
 }
 
 #title {

@@ -8,7 +8,7 @@ import {
   buildTemplate,
   templates,
   filePathToArray,
-  deleteTemplate
+  deleteTemplate,
 } from "./renderer/js/script.js";
 let win;
 let templateWindow;
@@ -22,8 +22,10 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
+    titleBarStyle: "hidden",
+    ...(process.platform !== "darwin" ? { titleBarOverlay: true } : {}),
   });
-
+  win.setWindowButtonVisibility(false);
   win.loadFile("index.html");
 }
 
@@ -35,8 +37,11 @@ function createTemplateWindow() {
       preload: path.join(__dirname, "preload.js"),
     },
     modal: true,
+    titleBarStyle: "hidden",
+    ...(process.platform !== "darwin" ? { titleBarOverlay: true } : {}),
   });
 
+  templateWindow.setWindowButtonVisibility(false);
   templateWindow.loadFile("./renderer/create-template.html");
 }
 
@@ -59,11 +64,14 @@ app.whenReady().then(() => {
   ipcMain.handle("delete-template", (event, templateName) => {
     deleteTemplate(templateName);
     win.reload();
-  })
-  ipcMain.handle("templates", () => templates);
-  ipcMain.handle("buildTemplate", (event, template, filePath, topFolderName) => {
-    buildTemplate(template, filePath, topFolderName);
   });
+  ipcMain.handle("templates", () => templates);
+  ipcMain.handle(
+    "buildTemplate",
+    (event, template, filePath, topFolderName) => {
+      buildTemplate(template, filePath, topFolderName);
+    }
+  );
   ipcMain.handle("createNewTemplate", (event, filePath, templateName) => {
     createNewTemplate(filePath, templateName);
   });
@@ -72,7 +80,7 @@ app.whenReady().then(() => {
   });
   ipcMain.handle(
     "filePathToArray",
-    async (event, filePath) => await filePathToArray(filePath),
+    async (event, filePath) => await filePathToArray(filePath)
   );
 });
 
