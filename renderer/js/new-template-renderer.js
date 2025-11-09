@@ -30,7 +30,7 @@ async function getTemplatePathToCopy() {
     document
       .getElementById("template-location")
       .setAttribute("value", localPathName);
-    const fileStructure = await window.templit.filePathToArray(localPathName);
+    let fileStructure = await window.templit.filePathToArray(localPathName);
     displayTemplateStructure(
       fileStructure,
       document.getElementById("folder-structure-content"),
