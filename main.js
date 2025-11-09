@@ -8,11 +8,13 @@ import {
   buildTemplate,
   templates,
 } from "./renderer/js/script.js";
+let win;
+let templateWindow;
 
 const __dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
 
 function createWindow() {
-  const win = new BrowserWindow({
+   win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -24,7 +26,7 @@ function createWindow() {
 }
 
 function createTemplateWindow() {
-  const templateWindow = new BrowserWindow({
+  templateWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -44,8 +46,10 @@ app.whenReady().then(() => {
   });
   ipcMain.handle("sendCopyTemplateFilePath", (e, localPathName) => {
     createNewTemplate(localPathName);
-  })
-  
+  });
+  ipcMain.handle("close-template-window", () => {
+    templateWindow.close();
+  });
   ipcMain.handle("templates", () => templates);
   ipcMain.handle("buildTemplate", (event, template, filePath) => {
     buildTemplate(template, filePath);
