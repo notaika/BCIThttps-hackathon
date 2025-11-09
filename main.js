@@ -51,13 +51,17 @@ app.whenReady().then(() => {
   ipcMain.handle("close-template-window", () => {
     templateWindow.close();
   });
+  ipcMain.handle("refresh-window", (event, windowName) => {
+    win.reload();
+    templateWindow.focus();
+  });
 
   ipcMain.handle("templates", () => templates);
   ipcMain.handle("buildTemplate", (event, template, filePath) => {
     buildTemplate(template, filePath);
   });
-  ipcMain.handle("createNewTemplate", (event, filePath) => {
-    createNewTemplate(filePath);
+  ipcMain.handle("createNewTemplate", (event, filePath, templateName) => {
+    createNewTemplate(filePath, templateName);
   });
   ipcMain.on("open-template-window", () => {
     createTemplateWindow();

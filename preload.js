@@ -6,9 +6,11 @@ contextBridge.exposeInMainWorld("templit", {
     ipcRenderer.invoke("buildTemplate", template, filepath),
   openTemplateWindow: () => ipcRenderer.send("open-template-window"),
   closeTemplateWindow: () => ipcRenderer.invoke("close-template-window"),
-  createNewTemplate: (filepath) =>
-    ipcRenderer.send("createNewTemplate", filepath),
   filePathToArray: (filePath) => ipcRenderer.send("filePathToArray", filePath),
+  createNewTemplate: (filepath, templateName) =>
+    ipcRenderer.invoke("createNewTemplate", filepath, templateName),
+  refreshWindow: (windowName) =>
+    ipcRenderer.invoke("refresh-window", windowName),
 });
 
 contextBridge.exposeInMainWorld("functions", {
@@ -16,4 +18,5 @@ contextBridge.exposeInMainWorld("functions", {
   getTemplatePathToCopy: async () => ipcRenderer.invoke("getFilePath"),
   sendCopyTemplateFilePath: (localPathName) =>
     ipcRenderer.invoke("sendCopyTemplateFilePath", localPathName),
+  getDOMElement: (idName) => ipcRenderer.invoke("get-DOM-element"),
 });

@@ -2,13 +2,9 @@ import { displayTemplateStructure } from "./treeRendering.js";
 const templates = await window.templit.templates();
 
 document.addEventListener("DOMContentLoaded", (event) => {
-  document
-    .getElementById("template-location-btn")
-    .addEventListener("click", getTemplatePathToCopy);
+  document.getElementById("template-location-btn").addEventListener("click", getTemplatePathToCopy);
   document.getElementById("cancel-btn").addEventListener("click", closeWindow);
-  document
-    .getElementById("save-template-btn")
-    .addEventListener("click", saveTemplate);
+  document.getElementById("save-template-btn").addEventListener("click", saveTemplate);
 });
 
 async function getTemplatePathToCopy() {
@@ -31,6 +27,10 @@ function closeWindow() {
 }
 
 function saveTemplate() {
-  const templateSourcePath = document.getElementById("template-location").value;
-  window.templit.saveTemplate(templateSourcePath);
+  // const templateSourcePath = document.getElementById("template-location").value;
+  const templateSourcePath = "C:\\Users\\misch\\Downloads\\assignment1";
+  const templateName = document.getElementById("template-name").value;
+  window.templit.createNewTemplate(templateSourcePath, templateName);
+  window.templit.refreshWindow("templateWindow");
+  closeWindow();
 }
