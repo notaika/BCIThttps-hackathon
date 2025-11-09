@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-  document.getElementById("addTemplateFolderBtn").addEventListener("click", getTemplatePathToCopy);
+  document.getElementById("template-location-btn").addEventListener("click", getTemplatePathToCopy);
 })
 
 async function getTemplatePathToCopy() {
@@ -11,5 +11,4 @@ async function getTemplatePathToCopy() {
   } catch (err) {
     console.log(err);
   }
-    
 }
