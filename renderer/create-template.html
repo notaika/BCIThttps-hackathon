@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>templ.it - create</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="./css/create-template.css" />
+  </head>
+  <body>
+    <div class="window">
+      <!-- <div class="title-bar">Build New Template Structure</div> -->
+
+      <main class="container">
+        <div class="top-section">
+          <div class="input-template-name">
+            <label for="template-name" class="input-label template-name"
+              >Template Name:
+            </label>
+            <input
+              type="text"
+              name="template-name"
+              id="template-name"
+              placeholder="e.g, Python CLI Project" />
+          </div>
+
+          <div class="input-template-folder">
+            <label for="template-location" class="input-label template-name"
+              >Select Location:
+            </label>
+            <button
+              name="template-location"
+              id="template-location-btn"
+              class="btn-icon"
+              title="Select template folder">
+              📁
+            </button>
+          </div>
+        </div>
+
+        <div class="main-section">
+          <div class="file-structure">
+            <label for="file-content" class="input-label"
+              >Template Structure:</label
+            >
+            <div id="file-content" name="file-content" rows="12">
+              # ⟪ProjectName⟫ This is a template for a new CLI project.
+            </div>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="cancel">&gt;: Cancel</button>
+          <button id="save-template-btn" class="save">
+            &gt;: Save Template
+          </button>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="./renderer.js"></script>
+  </body>
+</html>

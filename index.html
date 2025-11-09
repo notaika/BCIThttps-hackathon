@@ -1,17 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
+      content="default-src 'self'; script-src 'self'" />
     <meta
       http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <link rel="stylesheet" href="./style.css" />
+      content="default-src 'self'; script-src 'self'" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./renderer/css/index.css" />
     <title>templ.it</title>
     <script type="module" src="./renderer.js"></script>
   </head>
@@ -44,35 +43,31 @@
               placeholder="Select a template or ... "
               name="template-select"
               list="template-list"
-              class="input-template-select"
-            />
+              class="input-template-select" />
             <datalist id="template-list" class="input-template-list">
             </datalist>
             <button
               id="create-template-btn"
               class="action-btn"
-              title="Create a new template"
-            >
+              title="Create a new template">
               &gt;: new Template();
             </button>
           </div>
         </div>
 
         <div class="input-group input-destination">
-          <label for="destination-path">Destination:</label>
+          <label for="destination-path" class="input-label">Destination:</label>
           <div class="input-with-button input-destination-style">
             <input
               type="text"
               id="destination-path"
               placeholder="~/Templates/..."
               readonly
-              class="input-destination-path"
-            />
+              class="input-destination-path" />
             <button
               id="select-destination-btn"
               class="btn-icon"
-              title="Select destination folder"
-            >
+              title="Select destination folder">
               📁
             </button>
           </div>
@@ -87,9 +82,8 @@
           <button
             id="copy-template-btn"
             class="action-btn"
-            title="Copy template to destination"
-          >
-            &gt;: copy template
+            title="Copy template to destination">
+            &gt;: Template.copy();
           </button>
         </div>
 
