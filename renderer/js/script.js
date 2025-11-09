@@ -4,7 +4,7 @@ export {
   buildTemplate,
   templates,
   filePathToArray,
-  deleteTemplate
+  deleteTemplate,
 };
 import { app } from "../../main.js";
 import path from "node:path";
@@ -210,6 +210,6 @@ function deleteTemplate(templateName) {
     delete templates[templateName];
     saveTemplates();
   } else {
-    console.log("runs but didn't work :(")
+    console.log("runs but didn't work :(");
   }
 }

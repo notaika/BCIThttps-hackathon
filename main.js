@@ -101,6 +101,9 @@ app.whenReady().then(() => {
   ipcMain.on("open-template-window", () => {
     createTemplateWindow();
   });
+  ipcMain.handle("pathJoin", (event, ...paths) => {
+    return path.join(...paths);
+  });
   ipcMain.handle(
     "filePathToArray",
     async (event, filePath) => await filePathToArray(filePath),

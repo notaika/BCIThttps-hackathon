@@ -189,7 +189,7 @@
 
 .status-message {
   color: var(--fuji-white);
-  white-space: pre-wrap;
+  /* white-space: pre-wrap; */
   word-wrap: break-word;
   font-style: italic;
 }

@@ -12,10 +12,14 @@ contextBridge.exposeInMainWorld("templit", {
     ipcRenderer.invoke("createNewTemplate", filepath, templateName),
   refreshWindow: (windowName) =>
     ipcRenderer.invoke("refresh-window", windowName),
-  deleteTemplate: (templateName) => ipcRenderer.invoke("delete-template", templateName),
-  maximizeScreen: (fromWhichRenderer) => ipcRenderer.invoke("maximize-screen", fromWhichRenderer),
-  minimizeScreen: (fromWhichRenderer) => ipcRenderer.invoke("minimize-screen", fromWhichRenderer),
-  closeScreen: (fromWhichRenderer) => ipcRenderer.invoke("close-screen", fromWhichRenderer),
+  deleteTemplate: (templateName) =>
+    ipcRenderer.invoke("delete-template", templateName),
+  maximizeScreen: (fromWhichRenderer) =>
+    ipcRenderer.invoke("maximize-screen", fromWhichRenderer),
+  minimizeScreen: (fromWhichRenderer) =>
+    ipcRenderer.invoke("minimize-screen", fromWhichRenderer),
+  closeScreen: (fromWhichRenderer) =>
+    ipcRenderer.invoke("close-screen", fromWhichRenderer),
 });
 
 contextBridge.exposeInMainWorld("functions", {
@@ -24,4 +28,5 @@ contextBridge.exposeInMainWorld("functions", {
   sendCopyTemplateFilePath: (localPathName) =>
     ipcRenderer.invoke("sendCopyTemplateFilePath", localPathName),
   getDOMElement: (idName) => ipcRenderer.invoke("get-DOM-element"),
+  pathJoin: (...paths) => ipcRenderer.invoke("pathJoin", ...paths),
 });

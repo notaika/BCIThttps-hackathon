@@ -22,7 +22,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
     window.templit.openTemplateWindow();
   });
   templateInput.addEventListener("change", updateTreePreview);
+  templateInput.addEventListener("change", updateReadyMessage);
   instanceNameInput.addEventListener("change", updatePreviewName);
+  instanceNameInput.addEventListener("change", updateReadyMessage);
+  destinationPathInput.addEventListener("change", updateReadyMessage);
   deleteTemplateBtn.addEventListener("click", deleteTemplate);
   menuMaximizeBtn.addEventListener("click", () => {
     window.templit.maximizeScreen("win");
@@ -32,7 +35,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
   menuCloseBtn.addEventListener("click", () => {
     window.templit.closeScreen("win");
-  })
+  });
 });
 
 async function populateTemplateList() {
@@ -50,6 +53,7 @@ function copyTemplate() {
     destinationPathInput.value.trim(),
     parentFileName,
   );
+  displayDoneMessage();
 }
 
 async function filePathBtn() {
@@ -57,6 +61,7 @@ async function filePathBtn() {
   let localPathName = dialogObj.filePaths[0];
   destinationPathInput.setAttribute("value", localPathName);
   document.getElementById("template-destination").innerText = localPathName;
+  updateReadyMessage();
 }
 
 async function updateTreePreview(event) {
@@ -78,6 +83,33 @@ function updatePreviewName(event) {
   } else {
     instanceNamePreview.innerText = templateInput.value;
   }
+}
+
+async function updateReadyMessage() {
+  const readyMessage = document.getElementById("status-message-pending");
+  const templateSelection = templateInput.value;
+  const instanceName = instanceNameInput.value;
+  const destPath = destinationPathInput.value;
+  if (templateSelection && instanceName && destPath) {
+    const templates = await window.templit.templates();
+    if (templates[templateSelection]) {
+      readyMessage.removeAttribute("hidden");
+      return;
+    }
+  }
+  readyMessage.setAttribute("hidden", "true");
+}
+
+async function displayDoneMessage() {
+  const destPath = destinationPathInput.value;
+  const instanceName = instanceNameInput.value;
+  const successPath = await window.functions.pathJoin(destPath, instanceName);
+  document
+    .getElementById("status-message-pending")
+    .setAttribute("hidden", "true");
+  document.getElementById("preview-log").setAttribute("hidden", "true");
+  document.getElementById("template-success-path").innerText = successPath;
+  document.getElementById("status-message-success").removeAttribute("hidden");
 }
 
 function deleteTemplate() {
