@@ -5,6 +5,7 @@ const copyButton = document.getElementById("copy-template-btn");
 const destinationPathInput = document.getElementById("destination-path");
 const templateInput = document.getElementById("template-select");
 const createTemplateBtn = document.getElementById("create-template-btn");
+const deleteTemplateBtn = document.getElementById("delete-template-btn");
 
 document.addEventListener("DOMContentLoaded", (event) => {
   populateTemplateList();
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     window.templit.openTemplateWindow();
   });
   templateInput.addEventListener("change", updateTreePreview);
+  deleteTemplateBtn.addEventListener("click", deleteTemplate);
 });
 
 async function populateTemplateList() {
@@ -27,9 +29,11 @@ async function populateTemplateList() {
 }
 
 function copyTemplate() {
+  let parentFileName = document.getElementById("template-instance-name").value;
   window.templit.buildTemplate(
     templateInput.value.trim(),
     destinationPathInput.value.trim(),
+    parentFileName,
   );
 }
 
@@ -37,6 +41,7 @@ async function filePathBtn() {
   let dialogObj = await window.functions.getFilePath();
   let localPathName = dialogObj.filePaths[0];
   destinationPathInput.setAttribute("value", localPathName);
+  document.getElementById("template-destination").innerText = localPathName;
 }
 
 async function updateTreePreview(event) {
@@ -48,4 +53,9 @@ async function updateTreePreview(event) {
   if (template) {
     displayTemplateStructure(template, templatePreview);
   }
+}
+
+function deleteTemplate() {
+  console.log("template input: " + templateInput);
+  window.templit.deleteTemplate(templateInput.value);
 }

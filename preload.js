@@ -2,8 +2,8 @@ const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("templit", {
   templates: () => ipcRenderer.invoke("templates"),
-  buildTemplate: (template, filepath) =>
-    ipcRenderer.invoke("buildTemplate", template, filepath),
+  buildTemplate: (template, filepath, topFolderName) =>
+    ipcRenderer.invoke("buildTemplate", template, filepath, topFolderName),
   openTemplateWindow: () => ipcRenderer.send("open-template-window"),
   closeTemplateWindow: () => ipcRenderer.invoke("close-template-window"),
   filePathToArray: async (filePath) =>
@@ -12,6 +12,7 @@ contextBridge.exposeInMainWorld("templit", {
     ipcRenderer.invoke("createNewTemplate", filepath, templateName),
   refreshWindow: (windowName) =>
     ipcRenderer.invoke("refresh-window", windowName),
+  deleteTemplate: (templateName) => ipcRenderer.invoke("delete-template", templateName),
 });
 
 contextBridge.exposeInMainWorld("functions", {

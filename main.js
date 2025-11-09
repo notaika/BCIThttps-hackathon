@@ -8,6 +8,7 @@ import {
   buildTemplate,
   templates,
   filePathToArray,
+  deleteTemplate
 } from "./renderer/js/script.js";
 let win;
 let templateWindow;
@@ -55,10 +56,13 @@ app.whenReady().then(() => {
     win.reload();
     templateWindow.focus();
   });
-
+  ipcMain.handle("delete-template", (event, templateName) => {
+    deleteTemplate(templateName);
+    win.reload();
+  })
   ipcMain.handle("templates", () => templates);
-  ipcMain.handle("buildTemplate", (event, template, filePath) => {
-    buildTemplate(template, filePath);
+  ipcMain.handle("buildTemplate", (event, template, filePath, topFolderName) => {
+    buildTemplate(template, filePath, topFolderName);
   });
   ipcMain.handle("createNewTemplate", (event, filePath, templateName) => {
     createNewTemplate(filePath, templateName);
