@@ -9,4 +9,6 @@ contextBridge.exposeInMainWorld("templit", {
 
 contextBridge.exposeInMainWorld("functions", {
   getFilePath: async () => ipcRenderer.invoke("getFilePath"),
+  getTemplatePathToCopy: async () => ipcRenderer.invoke("getFilePath"),
+  sendCopyTemplateFilePath: (localPathName) => ipcRenderer.invoke("sendCopyTemplateFilePath", localPathName)
 });
