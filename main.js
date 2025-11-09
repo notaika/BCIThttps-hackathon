@@ -10,7 +10,7 @@ import {
   filePathToArray,
   deleteTemplate,
 } from "./renderer/js/script.js";
-import handleSquirrelEvent from "./squirrel-events.cjs";
+import { handleSquirrelEvent } from "./squirrel-events.cjs";
 let win;
 let templateWindow;
 

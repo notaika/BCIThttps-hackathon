@@ -1,13 +1,13 @@
-const app = require('app');
-exports = handleSquirrelEvent;
+const { app } = require('electron');
+exports.handleSquirrelEvent = handleSquirrelEvent;
 
 function handleSquirrelEvent() {
   if (process.argv.length === 1) {
     return false;
   }
 
-  const ChildProcess = require('child_process');
-  const path = require('path');
+  const ChildProcess = require('node:child_process');
+  const path = require('node:path');
 
   const appFolder = path.resolve(process.execPath, '..');
   const rootAtomFolder = path.resolve(appFolder, '..');
