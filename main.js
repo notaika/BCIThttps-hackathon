@@ -10,9 +10,11 @@ import {
 } from "./renderer/js/script.js";
 
 const __dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
+let win;
+let templateWindow;
 
 function createWindow() {
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -24,7 +26,7 @@ function createWindow() {
 }
 
 function createTemplateWindow() {
-  const templateWindow = new BrowserWindow({
+  templateWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
