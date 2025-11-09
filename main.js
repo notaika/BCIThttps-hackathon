@@ -12,9 +12,11 @@ let win;
 let templateWindow;
 
 const __dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
+let win;
+let templateWindow;
 
 function createWindow() {
-   win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -50,9 +52,13 @@ app.whenReady().then(() => {
   ipcMain.handle("close-template-window", () => {
     templateWindow.close();
   });
+
   ipcMain.handle("templates", () => templates);
   ipcMain.handle("buildTemplate", (event, template, filePath) => {
     buildTemplate(template, filePath);
+  });
+  ipcMain.handle("createNewTemplate", (event, filePath) => {
+    createNewTemplate(filePath);
   });
   ipcMain.on("open-template-window", () => {
     createTemplateWindow();

@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-  document.getElementById("template-location-btn").addEventListener("click", getTemplatePathToCopy);
-  document.getElementById("cancel-btn").addEventListener("click", closeWindow)
-})
-
+  document
+    .getElementById("template-location-btn")
+    .addEventListener("click", getTemplatePathToCopy);
+  document.getElementById("cancel-btn").addEventListener("click", closeWindow);
+  document
+    .getElementById("save-template-btn")
+    .addEventListener("click", saveTemplate);
+});
 
 async function getTemplatePathToCopy() {
   try {
@@ -16,4 +20,9 @@ async function getTemplatePathToCopy() {
 
 function closeWindow() {
   window.templit.closeTemplateWindow();
+}
+
+function saveTemplate() {
+  const templateSourcePath = document.getElementById("template-location").value;
+  window.templit.saveTemplate(templateSourcePath);
 }
