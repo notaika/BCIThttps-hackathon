@@ -10,8 +10,14 @@ import {
   filePathToArray,
   deleteTemplate,
 } from "./renderer/js/script.js";
+import handleSquirrelEvent from "./squirrel-events.cjs";
 let win;
 let templateWindow;
+
+if (handleSquirrelEvent()) {
+  // squirrel event handled and app will exit in 1000ms, so don't do anything else
+  return;
+}
 
 const __dirname = path.join(path.dirname(fileURLToPath(import.meta.url)));
 
@@ -80,7 +86,6 @@ app.whenReady().then(() => {
       } else {
         templateWindow.unmaximize();
       }
-
     }
   }),
     ipcMain.handle("minimize-screen", (event, fromWhichRenderer) => {
