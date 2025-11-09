@@ -4,6 +4,8 @@ const templateDatalist = document.getElementById("template-list");
 const copyButton = document.getElementById("copy-template-btn");
 const destinationPathInput = document.getElementById("destination-path");
 const templateInput = document.getElementById("template-select");
+const instanceNameInput = document.getElementById("template-instance-name");
+const instanceNamePreview = document.getElementById("preview-name");
 const createTemplateBtn = document.getElementById("create-template-btn");
 const deleteTemplateBtn = document.getElementById("delete-template-btn");
 
@@ -17,6 +19,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     window.templit.openTemplateWindow();
   });
   templateInput.addEventListener("change", updateTreePreview);
+  instanceNameInput.addEventListener("change", updatePreviewName);
   deleteTemplateBtn.addEventListener("click", deleteTemplate);
 });
 
@@ -29,7 +32,7 @@ async function populateTemplateList() {
 }
 
 function copyTemplate() {
-  let parentFileName = document.getElementById("template-instance-name").value;
+  let parentFileName = instanceNameInput.value;
   window.templit.buildTemplate(
     templateInput.value.trim(),
     destinationPathInput.value.trim(),
@@ -48,10 +51,20 @@ async function updateTreePreview(event) {
   const templates = await window.templit.templates();
   const template = templates[this.value];
   const templatePreview = document.getElementById("template-preview");
-  document.getElementById("preview-name").innerText = "Instance Name";
+  if (instanceNamePreview.innerText === "") {
+    instanceNamePreview.innerText = templateInput.value;
+  }
   document.getElementById("preview-log").removeAttribute("hidden");
   if (template) {
     displayTemplateStructure(template, templatePreview);
+  }
+}
+
+function updatePreviewName(event) {
+  if (this.value) {
+    instanceNamePreview.innerText = this.value;
+  } else {
+    instanceNamePreview.innerText = templateInput.value;
   }
 }
 
