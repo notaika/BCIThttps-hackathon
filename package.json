@@ -1,7 +1,7 @@
 {
   "name": "templit",
   "version": "1.0.0",
-  "description": "description tbd",
+  "description": "A utility desktop app that streamlines your workflow by creating complex folder and file structures from a saved template",
   "homepage": "https://github.com/notaika/BCIThttps-hackathon#readme",
   "bugs": {
     "url": "https://github.com/notaika/BCIThttps-hackathon/issues"

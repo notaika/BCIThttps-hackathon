@@ -113,6 +113,5 @@ async function displayDoneMessage() {
 }
 
 function deleteTemplate() {
-  console.log("template input: " + templateInput);
   window.templit.deleteTemplate(templateInput.value);
 }
