@@ -8,6 +8,9 @@ const instanceNameInput = document.getElementById("template-instance-name");
 const instanceNamePreview = document.getElementById("preview-name");
 const createTemplateBtn = document.getElementById("create-template-btn");
 const deleteTemplateBtn = document.getElementById("delete-template-btn");
+const menuMaximizeBtn = document.getElementById("max-btn");
+const menuMinimizeBtn = document.getElementById("min-btn");
+const menuCloseBtn = document.getElementById("close-btn");
 
 document.addEventListener("DOMContentLoaded", (event) => {
   populateTemplateList();
@@ -21,6 +24,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
   templateInput.addEventListener("change", updateTreePreview);
   instanceNameInput.addEventListener("change", updatePreviewName);
   deleteTemplateBtn.addEventListener("click", deleteTemplate);
+  menuMaximizeBtn.addEventListener("click", () => {
+    window.templit.maximizeScreen("win");
+  });
+  menuMinimizeBtn.addEventListener("click", () => {
+    window.templit.minimizeScreen("win");
+  });
+  menuCloseBtn.addEventListener("click", () => {
+    window.templit.closeScreen("win");
+  })
 });
 
 async function populateTemplateList() {
