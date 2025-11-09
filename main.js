@@ -23,8 +23,9 @@ function createWindow() {
       preload: path.join(__dirname, "preload.js"),
     },
     titleBarStyle: "hidden",
+    ...(process.platform !== "darwin" ? { titleBarOverlay: true } : {}),
   });
-
+  win.setWindowButtonVisibility(false);
   win.loadFile("index.html");
 }
 
@@ -37,8 +38,10 @@ function createTemplateWindow() {
     },
     modal: true,
     titleBarStyle: "hidden",
+    ...(process.platform !== "darwin" ? { titleBarOverlay: true } : {}),
   });
 
+  templateWindow.setWindowButtonVisibility(false);
   templateWindow.loadFile("./renderer/create-template.html");
 }
 

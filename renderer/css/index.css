@@ -93,18 +93,28 @@
 }
 
 /* Action Buttons */
-#create-template-btn {
+#delete-template-btn {
   background-color: var(--autumn-red);
   border-bottom: 3px solid #892c2e;
+  margin-right: 0.7em;
 }
 
-#create-template-btn:hover {
+#delete-template-btn:hover {
   background-color: var(--autumn-yellow);
   border-bottom: 3px solid #b4864f;
 }
 
+#create-template-btn {
+  background-color: #488cc0;
+  border-bottom: 3px solid #3f6b8c;
+}
+
+#create-template-btn:hover {
+  background-color: var(--oni-violet);
+  border-bottom: 3px solid #715f8e;
+}
+
 .action-btn {
-  flex-grow: 1;
   padding: 8px 12px;
   border: none;
   border-radius: 4px;
@@ -129,6 +139,23 @@
   transform: translateY(1px);
   box-shadow: none;
   transition: transform 0.05s ease;
+}
+
+.create-template-btn {
+  display: flex;
+  width: 100%;
+}
+
+.create-template-btn > a {
+  font-size: 11px;
+  text-decoration: underline;
+  font-style: italic;
+  margin: 0.5em 0 1em 0.5em;
+}
+
+.create-template-btn > span {
+  color: rgb(11, 212, 212);
+  text-decoration: underline;
 }
 
 .input-template-instance-name {

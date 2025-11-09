@@ -1,16 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
+      content="default-src 'self'; script-src 'self'" />
     <meta
       http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
+      content="default-src 'self'; script-src 'self'" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="./renderer/css/index.css" />
     <title>templ.it - main</title>
@@ -29,14 +27,12 @@
           <button id="max-btn" title="Maximize">
             <img
               src="./renderer/assets/icons/maximize.svg"
-              alt="maximize icon"
-            />
+              alt="maximize icon" />
           </button>
           <button id="min-btn" title="Minimize">
             <img
               src="./renderer/assets/icons/minimize.svg"
-              alt="minimize icon"
-            />
+              alt="minimize icon" />
           </button>
           <button id="close-btn" title="Close">
             <img src="./renderer/assets/icons/close.svg" alt="close icon" />
@@ -49,7 +45,7 @@
           <label class="input-label template-path-label" for="template-path"
             >Select Template:</label
           >
-          <button title="Delete a template" id="delete-template-btn">Delete</button>
+
           <small class="helper-text"
             ><i>// List of available templates</i></small
           >
@@ -57,21 +53,37 @@
             <input
               type="options"
               id="template-select"
-              placeholder="Select a template or ... "
+              placeholder="Select an existing template ..."
               name="template-select"
               list="template-list"
-              class="input-template-select"
-            />
+              class="input-template-select" />
+
             <datalist id="template-list" class="input-template-list">
             </datalist>
+
+            <button
+              title="Delete a template"
+              id="delete-template-btn"
+              class="action-btn">
+              <img src="./renderer/assets/icons/delete.svg" alt="delete icon" />
+            </button>
             <button
               id="create-template-btn"
-              class="action-btn"
               title="Create a new template"
-            >
-              &gt;: Create Template;
+              class="action-btn">
+              <img src="./renderer/assets/icons/create.svg" alt="create icon" />
             </button>
           </div>
+
+          <!-- <div class="create-template-btn">
+            <a
+              id="create-template-btn"
+              title="Create a new template"
+              class="bright-cyan">
+              <span> &#10132; </span>Create a New Template
+            </a>
+          </div> -->
+
           <div class="input-group input-group-sub">
             <small class="helper-text"
               ><i>// Enter a name for your templ.it()</i></small
@@ -82,8 +94,7 @@
                 name="template-name"
                 id="template-instance-name"
                 placeholder="e.g. COMP1510 Folder Structure, Work Project Setup, ..."
-                class="input-template-instance-name"
-              />
+                class="input-template-instance-name" />
             </div>
           </div>
         </div>
@@ -96,13 +107,11 @@
               id="destination-path"
               placeholder="~/Templates/..."
               readonly
-              class="input-destination-path"
-            />
+              class="input-destination-path" />
             <button
               id="select-destination-btn"
               class="btn-icon"
-              title="Select destination folder"
-            >
+              title="Select destination folder">
               📁
             </button>
           </div>
@@ -117,8 +126,7 @@
           <button
             id="copy-template-btn"
             class="action-btn"
-            title="Copy template to destination"
-          >
+            title="Copy template to destination">
             &gt;: Copy Template
           </button>
         </div>
