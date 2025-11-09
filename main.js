@@ -60,6 +60,27 @@ app.whenReady().then(() => {
     deleteTemplate(templateName);
     win.reload();
   })
+  ipcMain.handle("maximize-screen", (event, fromWhichRenderer) => {
+    if (fromWhichRenderer == "win") {
+      win.maximize();
+    } else {
+      templateWindow.maximize();
+    }
+  }),
+  ipcMain.handle("minimize-screen", (event, fromWhichRenderer) => {
+    if (fromWhichRenderer == "win") {
+      win.minimize();
+    } else {
+      templateWindow.minimize();
+    }
+  }),
+  ipcMain.handle("close-screen", (event, fromWhichRenderer) => {
+    if (fromWhichRenderer == "win") {
+      win.close();
+    } else {
+      templateWindow.close();
+    }
+  }),
   ipcMain.handle("templates", () => templates);
   ipcMain.handle("buildTemplate", (event, template, filePath, topFolderName) => {
     buildTemplate(template, filePath, topFolderName);
