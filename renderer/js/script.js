@@ -72,7 +72,7 @@ function readTemplates() {
         JSON.stringify(default_template_json),
         (err) => {
           readTemplates();
-        },
+        }
       );
     }
   }
@@ -141,13 +141,13 @@ function templateEntriesFromDir(templateEntryArray) {
         templateEntry.type = "file";
         templateEntry.name = dirEntry.name;
         const fileContent = fs.readFileSync(
-          path.join(dirEntry.parentPath, dirEntry.name),
+          path.join(dirEntry.parentPath, dirEntry.name)
         );
         templateEntry.content = btoa(fileContent.toString());
       } else if (dirEntry.isDirectory()) {
         if (dirEntry.name == "node_modules") {
           throw new Error(
-            "You left node_modules in your template source folder. I refuse to make that a template.",
+            "You left node_modules in your template source folder. I refuse to make that a template."
           );
         }
         const dirEntryPath = path.join(dirEntry.parentPath, dirEntry.name);
@@ -157,7 +157,7 @@ function templateEntriesFromDir(templateEntryArray) {
         fs.opendir(dirEntryPath, templateEntriesFromDir(templateEntry.content));
       } else {
         throw new Error(
-          "Can't create template out of non-file, non-folder entry. What nonsene are you trying?",
+          "Can't create template out of non-file, non-folder entry. What nonsene are you trying?"
         );
       }
       templateEntryArray.push(templateEntry);

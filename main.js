@@ -70,7 +70,7 @@ app.whenReady().then(() => {
     deleteTemplate(templateName);
     win.reload();
   });
-  (ipcMain.handle("maximize-screen", (event, fromWhichRenderer) => {
+  ipcMain.handle("maximize-screen", (event, fromWhichRenderer) => {
     if (fromWhichRenderer == "win") {
       if (win.isNormal()) {
         win.maximize();
@@ -99,12 +99,12 @@ app.whenReady().then(() => {
         templateWindow.close();
       }
     }),
-    ipcMain.handle("templates", () => templates));
+    ipcMain.handle("templates", () => templates);
   ipcMain.handle(
     "buildTemplate",
     (event, template, filePath, topFolderName) => {
       buildTemplate(template, filePath, topFolderName);
-    },
+    }
   );
   ipcMain.handle("createNewTemplate", (event, filePath, templateName) => {
     createNewTemplate(filePath, templateName);
@@ -117,7 +117,7 @@ app.whenReady().then(() => {
   });
   ipcMain.handle(
     "filePathToArray",
-    async (event, filePath) => await filePathToArray(filePath),
+    async (event, filePath) => await filePathToArray(filePath)
   );
 });
 
