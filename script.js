@@ -122,9 +122,11 @@ function buildTempItemArray(tempItems, filepath) {
     if (fsItem.type === "file") {
       fs.open(itemPath, "wx", (err, fd) => {
         if (err && err.code !== "EEXIST") throw err;
+        fs.write(fd, atob(fsItem.content), (err) => {
+          if (err) throw err;
+        });
       });
-    }
-    if (fsItem.type === "folder") {
+    } else if (fsItem.type === "folder") {
       fs.mkdir(itemPath, { recursive: true }, (err) => {
         if (err && err.code !== "EEXIST") throw err;
         buildTempItemArray(fsItem.content, itemPath);
@@ -132,8 +134,6 @@ function buildTempItemArray(tempItems, filepath) {
     }
   }
 }
-
-/* LOW PRIORITY BELOW */
 
 /* Save entire templates array back to template file. Should
  * be called whenever a template is created by the user */
@@ -166,6 +166,10 @@ function templateEntriesFromDir(templateEntryArray) {
       if (dirEntry.isFile()) {
         templateEntry.type = "file";
         templateEntry.name = dirEntry.name;
+        const fileContent = fs.readFileSync(
+          path.join(dirEntry.parentPath, dirEntry.name),
+        );
+        templateEntry.content = btoa(fileContent.toString());
       } else if (dirEntry.isDirectory()) {
         const dirEntryPath = path.join(dirEntry.parentPath, dirEntry.name);
         templateEntry.type = "folder";
