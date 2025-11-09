@@ -30,11 +30,7 @@ app.whenReady().then(() => {
     return await dialog.showOpenDialog({ properties: ["openDirectory"] });
   });
   ipcMain.handle("sendCopyTemplateFilePath", (e, localPathName) => {
-    try {
-      createNewTemplate(localPathName);
-    } catch (err) {
-      console.error(err);
-    }
+    createNewTemplate(localPathName);
   })
   
   ipcMain.handle("templates", () => templates);
