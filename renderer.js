@@ -40,7 +40,6 @@ async function filePathBtn() {
 }
 
 async function updateTreePreview(event) {
-  console.log("deliver me from INEVITA");
   const templates = await window.templit.templates();
   const template = templates[this.value];
   const templatePreview = document.getElementById("template-preview");
