@@ -1,5 +1,8 @@
 import { displayTemplateStructure } from "./treeRendering.js";
 const templates = await window.templit.templates();
+const menuMaximizeBtn = document.getElementById("max-btn");
+const menuMinimizeBtn = document.getElementById("min-btn");
+const menuCloseBtn = document.getElementById("close-btn");
 
 document
   .getElementById("template-location-btn")
@@ -10,6 +13,15 @@ document
 document
   .getElementById("save-template-btn")
   .addEventListener("click", saveTemplate);
+menuMaximizeBtn.addEventListener("click", () => {
+  window.templit.maximizeScreen("templateWindow");
+});
+menuMinimizeBtn.addEventListener("click", () => {
+  window.templit.minimizeScreen("templateWindow");
+});
+menuCloseBtn.addEventListener("click", () => {
+  window.templit.closeScreen("templateWindow");
+})
 
 async function getTemplatePathToCopy() {
   try {
@@ -18,7 +30,7 @@ async function getTemplatePathToCopy() {
     document
       .getElementById("template-location")
       .setAttribute("value", localPathName);
-    const fileStructure = await window.templit.filePathToArray(localPathName);
+    let fileStructure = await window.templit.filePathToArray(localPathName);
     displayTemplateStructure(
       fileStructure,
       document.getElementById("folder-structure-content"),
