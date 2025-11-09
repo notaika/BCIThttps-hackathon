@@ -4,6 +4,7 @@ export {
   buildTemplate,
   templates,
   filePathToArray,
+  deleteTemplate
 };
 import { app } from "../../main.js";
 import path from "node:path";
@@ -110,9 +111,9 @@ function readTemplates() {
 
 /* Instance the selected template (arg is just
  * template name) at the specified location */
-function buildTemplate(template, filepath) {
+function buildTemplate(template, filepath, topFolderName) {
   const tempItems = templates[template];
-  const buildPath = path.join(filepath, template);
+  const buildPath = path.join(filepath, topFolderName);
 
   fs.mkdir(buildPath, { recursive: true }, (err) => {
     if (err && err.code !== "EEXIST") throw err;
@@ -201,4 +202,14 @@ function templateEntriesFromDir(templateEntryArray) {
       templateEntryArray.push(templateEntry);
     }
   };
+}
+
+/* Delete template from templates object. */
+function deleteTemplate(templateName) {
+  if (templateName in templates) {
+    delete templates[templateName];
+    saveTemplates();
+  } else {
+    console.log("runs but didn't work :(")
+  }
 }

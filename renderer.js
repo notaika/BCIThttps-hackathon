@@ -3,6 +3,7 @@ const copyButton = document.getElementById("copy-template-btn");
 const destinationPathInput = document.getElementById("destination-path");
 const templateInput = document.getElementById("template-select");
 const createTemplateBtn = document.getElementById("create-template-btn");
+const deleteTemplateBtn = document.getElementById("delete-template-btn");
 
 document.addEventListener("DOMContentLoaded", (event) => {
   populateTemplateList();
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   createTemplateBtn.addEventListener("click", (e) => {
     window.templit.openTemplateWindow();
   });
+  deleteTemplateBtn.addEventListener("click", deleteTemplate)
 });
 
 async function populateTemplateList() {
@@ -23,10 +25,7 @@ async function populateTemplateList() {
 
 function copyTemplate() {
   let parentFileName = document.getElementById("template-instance-name").value;
-  window.templit.buildTemplate(
-    parentFileName,
-    destinationPathInput.value.trim(),
-  );
+  window.templit.buildTemplate(templateInput.value.trim(), destinationPathInput.value.trim(), parentFileName);
 }
 
 async function filePathBtn() {
@@ -34,4 +33,9 @@ async function filePathBtn() {
   let localPathName = dialogObj.filePaths[0];
   destinationPathInput.setAttribute("value", localPathName);
   document.getElementById("template-destination").innerText = localPathName;
+}
+
+function deleteTemplate() {
+  console.log("template input: " + templateInput);
+  window.templit.deleteTemplate(templateInput.value);
 }
