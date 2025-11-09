@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <main>
+    <main class="wrapper">
       <div id="title-bar">
         <div id="title">templ.it</div>
         <div id="window-controls">
@@ -32,9 +32,7 @@
             >Select Template:</label
           >
           <small class="helper-text"
-            ><i
-              >// List of available templates or custom folder structures.</i
-            ></small
+            ><i>// List of available templates</i></small
           >
           <div class="input-with-button input-template">
             <input
@@ -50,8 +48,21 @@
               id="create-template-btn"
               class="action-btn"
               title="Create a new template">
-              &gt;: new Template();
+              &gt;: Create Template
             </button>
+          </div>
+          <div class="input-group input-group-sub">
+            <small class="helper-text"
+              ><i>// Enter a name for your templ.it()</i></small
+            >
+            <div class="input-group-text">
+              <input
+                type="text"
+                name="template-name"
+                id="template-instance-name"
+                placeholder="e.g. COMP1510 Folder Structure, Work Project Setup, ..."
+                class="input-template-instance-name" />
+            </div>
           </div>
         </div>
 
@@ -83,7 +94,7 @@
             id="copy-template-btn"
             class="action-btn"
             title="Copy template to destination">
-            &gt;: Template.copy();
+            &gt;: Copy Template
           </button>
         </div>
 
