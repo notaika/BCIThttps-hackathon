@@ -53,6 +53,7 @@ Have you ever made a reusable file structure, such as for a class or project? It
 
 ## Long Term
 - Make templ.it() as a multi-purpose template app. Expand from folders to doing text/doc file structures
+- Add the ability to create multiple structures from a template at the same time. Include word-replacement for folder names. E.g assignment{one} (one is replaced with the numbers 1-5 over five iterations)
 
 # Credits and Honourable Mentions
 **Aika Manalo** - CST Term 1
