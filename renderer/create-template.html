@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>templ.it - create</title>
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'" />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'" />
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="./css/create-template.css" />
-    <!-- <script defer type="module" src="../renderer.js"></script> -->
+    <title>templ.it - create</title>
   </head>
   <body>
-    <main>
+    <main class="wrapper">
       <div id="title-bar">
-        <div id="title">templ.it</div>
+        <div id="title">
+          <span class="ronin-yellow">templ</span>.<span class="oni-violet"
+            >it</span
+          ><span class="bright-cyan">();</span>
+        </div>
         <div id="window-controls">
-          <button id="min-btn" title="Minimize">─</button>
-          <button id="max-btn" title="Maximize">□</button>
-          <button id="close-btn" title="Close">✕</button>
+          <button id="max-btn" title="Maximize">
+            <img src="./assets/icons/maximize.svg" alt="maximize icon" />
+          </button>
+          <button id="min-btn" title="Minimize">
+            <img src="./assets/icons/minimize.svg" alt="minimize icon" />
+          </button>
+          <button id="close-btn" title="Close">
+            <img src="./assets/icons/close.svg" alt="close icon" />
+          </button>
         </div>
       </div>
 

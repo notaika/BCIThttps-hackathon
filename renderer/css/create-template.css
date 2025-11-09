@@ -1,27 +1,3 @@
-#title-bar {
-  height: 40px;
-  background-color: var(--sumi-ink-0);
-  color: var(--old-white);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-  border-bottom: 1px solid var(--sumi-ink-3);
-  display: none; /*FOR NOWW*/
-}
-
-.container {
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
-
-.input-group {
-  margin-bottom: 0.5em;
-}
-
 .input-label {
   display: block;
   color: var(--crystal-blue);

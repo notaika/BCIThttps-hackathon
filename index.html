@@ -18,11 +18,25 @@
   <body>
     <main class="wrapper">
       <div id="title-bar">
-        <div id="title">templ.it</div>
+        <div id="title">
+          <span class="ronin-yellow">templ</span>.<span class="oni-violet"
+            >it</span
+          ><span class="bright-cyan">();</span>
+        </div>
         <div id="window-controls">
-          <button id="min-btn" title="Minimize">─</button>
-          <button id="max-btn" title="Maximize">□</button>
-          <button id="close-btn" title="Close">✕</button>
+          <button id="max-btn" title="Maximize">
+            <img
+              src="./renderer/assets/icons/maximize.svg"
+              alt="maximize icon" />
+          </button>
+          <button id="min-btn" title="Minimize">
+            <img
+              src="./renderer/assets/icons/minimize.svg"
+              alt="minimize icon" />
+          </button>
+          <button id="close-btn" title="Close">
+            <img src="./renderer/assets/icons/close.svg" alt="close icon" />
+          </button>
         </div>
       </div>
 
@@ -101,18 +115,20 @@
         <div id="status-log" class="update-log">
           <p class="log-message">
             &gt;
-            <span id="status-message" class="">... waiting for user input</span>
+            <span id="status-message-normal" class="status-message normal"
+              >... waiting for user input</span
+            >
           </p>
           <p class="log-message">
             &gt;
-            <span id="status-message" class="success"
+            <span id="status-message-success" class="status-message success"
               >templ.it successfully loaded.</span
             >
           </p>
 
           <p class="log-message">
             &gt;
-            <span id="status-message" class="pending"
+            <span id="status-message-pending" class="status-message pending"
               >... templ.it loading</span
             >
           </p>
