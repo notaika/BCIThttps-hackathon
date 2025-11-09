@@ -69,9 +69,18 @@ app.whenReady().then(() => {
   });
   (ipcMain.handle("maximize-screen", (event, fromWhichRenderer) => {
     if (fromWhichRenderer == "win") {
-      win.maximize();
+      if (win.isNormal()) {
+        win.maximize();
+      } else {
+        win.unmaximize();
+      }
     } else {
-      templateWindow.maximize();
+      if (templateWindow.isNormal()) {
+        templateWindow.maximize();
+      } else {
+        templateWindow.unmaximize();
+      }
+
     }
   }),
     ipcMain.handle("minimize-screen", (event, fromWhichRenderer) => {
