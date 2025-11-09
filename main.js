@@ -44,11 +44,14 @@ app.whenReady().then(() => {
   });
   ipcMain.handle("sendCopyTemplateFilePath", (e, localPathName) => {
     createNewTemplate(localPathName);
-  })
-  
+  });
+
   ipcMain.handle("templates", () => templates);
   ipcMain.handle("buildTemplate", (event, template, filePath) => {
     buildTemplate(template, filePath);
+  });
+  ipcMain.handle("createNewTemplate", (event, filePath) => {
+    createNewTemplate(filePath);
   });
   ipcMain.on("open-template-window", () => {
     createTemplateWindow();

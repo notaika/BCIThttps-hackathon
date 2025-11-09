@@ -5,10 +5,13 @@ contextBridge.exposeInMainWorld("templit", {
   buildTemplate: (template, filepath) =>
     ipcRenderer.invoke("buildTemplate", template, filepath),
   openTemplateWindow: () => ipcRenderer.send("open-template-window"),
+  createNewTemplate: (filepath) =>
+    ipcRenderer.send("createNewTemplate", filepath),
 });
 
 contextBridge.exposeInMainWorld("functions", {
   getFilePath: async () => ipcRenderer.invoke("getFilePath"),
   getTemplatePathToCopy: async () => ipcRenderer.invoke("getFilePath"),
-  sendCopyTemplateFilePath: (localPathName) => ipcRenderer.invoke("sendCopyTemplateFilePath", localPathName)
+  sendCopyTemplateFilePath: (localPathName) =>
+    ipcRenderer.invoke("sendCopyTemplateFilePath", localPathName),
 });
